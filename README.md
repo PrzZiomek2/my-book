@@ -2,9 +2,4 @@ A web application for book lovers, to browse, rate, comment and discuss literary
 
 Project technology stack:
 
-TypeScript
-Next.js
-React.js
-Material UI
-MongoDB
-React Hook Form
+TypeScript, Next.js, React.js, Material UI, MongoDB, React Hook Form
