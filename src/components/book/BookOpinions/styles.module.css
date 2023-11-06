@@ -1,0 +1,54 @@
+.opinion{
+   margin: 25px 0;
+ }
+
+ .opinion_rater{
+   width: 100%;
+ }
+
+ .opinion_metadata{ 
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .opinion_user{
+   display: flex;
+   gap: 15px;
+   margin-bottom: 10px;
+   margin-right: 20px;
+ }
+ 
+ .opinion_user_avatar span{
+   display: block;
+   width: 30px;
+   height: 30px;
+   border-radius: 50px;
+   background-color: aliceblue;
+   border: 1px solid violet;
+ }
+ 
+ .opinion_user_content{
+   margin: 20px 0;
+ }
+
+ .opinion_actions{
+   display: flex;
+   gap: 15px;
+ }
+ 
+ .details_opinions_header{
+
+ }
+ 
+ .details_opinions_content{
+ 
+ }
+ 
+ .opinion_user_name{
+ 
+ }
+ 
+ .opinion_date_add{
+ 
+ }
+ 

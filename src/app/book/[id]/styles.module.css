@@ -1,0 +1,20 @@
+.details_page{
+  display: grid;
+  grid-template-areas: 
+    "head head"
+    "l r";
+  grid-gap: 20px;
+  grid-template-columns: 2fr 1fr;
+}
+
+.details_info{
+  margin-right: 80px;
+}
+
+.details_opinions{
+  grid-area: r;
+}
+
+.details_header{
+  grid-area: head;
+}

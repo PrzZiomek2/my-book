@@ -1,0 +1,52 @@
+.details_image img{
+   object-fit: contain;
+   box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+   border-radius: 4px;
+ }
+ 
+ .details_image_replacement{
+   background-color: rgb(243 245 248);
+   border: 1px solid #bdbde5;
+   border-radius: 5px;
+   width: 300px;
+   height: 500px;
+   flex-shrink: 0;
+   box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+ }
+ 
+ .details_info_left{
+   display: flex;
+   justify-content: space-between;
+ }
+ 
+ .details_info_right{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ }
+
+ .book_actions_details{
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+ }
+ 
+ .details_info_bottom{
+
+ }
+
+ .details_sub_info{
+
+ }
+
+ .details_sub_metadane{
+
+ }
+
+ .details_sub_price{
+   margin-top: 30px;
+ }
+
+ .details_sub_similar{
+
+ }
