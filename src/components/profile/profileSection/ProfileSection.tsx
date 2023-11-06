@@ -10,7 +10,7 @@ import Image from 'next/image';
 import defaultImg from '../../../../public/profile.jpg';
 import { InputTags, TagCustom } from '../../commons/InputTags';
 import CircularProgress from '@mui/material/CircularProgress';
-import { MyBooks } from '../MyBooks';
+import { MyBooks } from '../myBooks/MyBooks';
 import { AlertInfo } from '@/components/ui/AlertInfo';
 import styles from './styles.module.css'
 

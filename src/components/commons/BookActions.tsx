@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -7,17 +8,19 @@ import IconButton from '@mui/material/IconButton';
 import { BookDefault, BookType, CustomBook } from '@/types/interfaces';
 import { Loader } from '@/utils/loader';  
 import useSWR from 'swr';
+import { CircularProgress } from '@mui/material';
 
 
 type BookTypeArg = BookType.FAVOURITE | BookType.ON_SHELF | BookType.READ;
 
 interface BookActionsProps{
    className?: string;
-   userId: string;
    book: CustomBook & BookDefault;
 }
 
-export const BookActions: React.FC<BookActionsProps> = ({className, book, userId}) => {
+export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
+   const {data: session} = useSession();
+   const userId = session?.user.user._id; 
    const {data: customBook, mutate} = useSWR<{book: CustomBook}>(`http://localhost:3000/api/book/${book.id}`);
 
    const currentBook = customBook?.book || book; 
