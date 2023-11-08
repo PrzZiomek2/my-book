@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 
 import { signIn } from 'next-auth/react';
 import Container from '@mui/material/Container';
@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import {LoginForm} from '@/components/auth/signIn/LoginForm';
 import { SubmitHandler } from 'react-hook-form';
 import { AlertInfo } from '@/components/ui/AlertInfo';
+import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
 
 type FormValues = {
   email: string;
@@ -15,15 +16,11 @@ type FormValues = {
 
 export default function SignIn() {
 
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
+  const [state, dispatch] = useFetchReducer();
 
   const onSubmit = async (data: SubmitHandler<FormValues>) => {
     try {
-      setLoading(true);   
+      dispatch({type: ActionType.FETCH_INIT})  
 
       const res = await signIn("credentials", {
         redirect: true,
@@ -32,23 +29,22 @@ export default function SignIn() {
         callbackUrl: "/"
       });
 
-      setLoading(false);
-
-      if (!res?.error) {
-        setFormValues({ email: "", password: "" });
-      } 
-      else {        
-        setError("invalid email or password");
-      }
-    } catch (error: any) {
-      setLoading(false);
-      setError(error);
+      dispatch({
+        type: ActionType.FETCH_SUCCESS,
+        payload: {}
+      })
+    } 
+    catch (error) {
+      dispatch({
+        type: ActionType.FETCH_ERROR,
+        error: `Niepoprawny login lub hasło`
+      });
     }
   };
 
   return (
-    <Container classes={{root: "container_custom"}}>
-      <AlertInfo expand={!!error} content={error}/>
+    <Container>
+      <AlertInfo expand={!!state.error} content={state.error}/>
       <LoginForm 
         onSubmit={onSubmit} 
       />     

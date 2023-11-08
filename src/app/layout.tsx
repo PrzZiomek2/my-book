@@ -23,7 +23,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <ThemeRegistry options={{ key: 'mui' }}>
           <body className={inter.className}>
             <Header />
-            <Container classes={{root: "container_custom"}}>
+            <Container>
               <main>
                 {children}
             </main>

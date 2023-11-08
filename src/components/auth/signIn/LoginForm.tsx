@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -17,9 +17,12 @@ import {
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
-
+type FormValues = {
+  email: string;
+  password: string;
+}
 interface LoginFormProps {
-  onSubmit: (e: React.FormEvent) => Promise<void>;
+  onSubmit: (data: SubmitHandler<FormValues>) => Promise<void>;
 }
 
 export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
