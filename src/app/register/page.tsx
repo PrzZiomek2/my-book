@@ -1,10 +1,12 @@
 "use client";
-import { Box } from '@mui/material';
+import React from 'react'
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
-import { useForm, SubmitHandler } from "react-hook-form"
+import { SubmitHandler } from "react-hook-form"
 
 import {RegisterForm} from '@/components/register/RegisterForm';
+import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
+import Container from '@mui/material/Container';
+import { AlertInfo } from '@/components/ui/AlertInfo';
 
 type FormValues = {
    name: string;
@@ -15,9 +17,10 @@ type FormValues = {
 export default function Register() {
 
    const router = useRouter();
-   const [error, setError] = useState("");
+   const [state, dispatch] = useFetchReducer();
 
    const createAccount = async (data: SubmitHandler<FormValues>) => { 
+      dispatch({type: ActionType.FETCH_INIT});
 
       const res = await fetch("http://localhost:3000/api/user", {
         method: "POST",
@@ -28,14 +31,22 @@ export default function Register() {
           password: data.password
         }),
       })
-      .catch(err => console.log("err when adding user", err));
+      .catch(err => {
+         dispatch({
+            type: ActionType.FETCH_ERROR,
+            error: `Rejestracja nieudana, sprawdź podawane dane.`
+          });
+      });
 
       if(!res) return; 
 
       const resJson = await res.json(); 
 
       if(resJson?.error){
-         setError(resJson.error);
+         dispatch({
+            type: ActionType.FETCH_ERROR,
+            error: resJson?.error
+          });
       }
       
       if(resJson?.insertedId){
@@ -44,6 +55,9 @@ export default function Register() {
    }; 
 
   return (
+   <Container>
+      <AlertInfo expand={!!state.error} content={state.error}/>
       <RegisterForm createAccount={createAccount} />
+   </Container>
   )
 }

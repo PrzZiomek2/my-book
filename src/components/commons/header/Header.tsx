@@ -24,7 +24,7 @@ export const Header = () => {
  
   return (
    <AppBar position="static" sx={{padding: "10px 0"}}>
-      <Container classes={{root: "container_custom"}}>
+      <Container>
          <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography

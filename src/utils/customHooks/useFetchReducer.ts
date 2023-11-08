@@ -20,7 +20,7 @@ export enum ActionType {
 
 type FetchSuccessAction = {
   type: ActionType.FETCH_SUCCESS;
-  payload: Record<string, any>;
+  payload: Record<string, any> | {};
 }
 
 type FetchInitAction = {
