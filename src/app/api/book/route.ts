@@ -7,7 +7,7 @@ export async function POST(req: Request) {
    const client = await clientPromise;
    const db = client.db("library"); 
    let bookUpdated = null;
-   const existingBook = await db.collection<CustomBook>("books").findOne({id: book.id});    console.log({book});
+   const existingBook = await db.collection<CustomBook>("books").findOne({id: book.id});   // console.log({book});
 
    if(existingBook){ 
      bookUpdated = await db.collection<UserBooks>("books").findOneAndUpdate({ _id: book._id }, {$set: book});

@@ -9,7 +9,6 @@ export async function GET(request: Request, {params}:{params: {id: string}}) {
    const bookId = params.id; 
 
    const book = await db.collection<CustomBook>("books").findOne({ id: bookId }); 
-   console.log({bookId, book});
    
    return NextResponse.json({ book });
 }
@@ -26,7 +25,6 @@ export async function POST(req: Request, {params}:{params: {id: string}}) {
      bookUpdated = await db.collection<UserBooks>("books").findOneAndUpdate({ id: bookId }, {$set: book});
      return NextResponse.json({ message: "dane zaktualizowano", success: bookUpdated.ok });
    };  
-   console.log({kurwa: book});
    
    bookUpdated = await db.collection("books").insertOne(book);
 
