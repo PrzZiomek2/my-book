@@ -59,7 +59,6 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
           [type]: existingType.find(id => id === userId) ? existingType.filter(id => id !== userId) : [...existingType, userId]
          })
        }).catch(err => console.log("err when adding book", err)); 
-       console.log({bookRes});
        
        setIsLoading(prev => ({[type]: false}));
  

@@ -4,6 +4,8 @@ import { Loader } from '@/utils/loader';
 import { BookOpinions } from '@/components/book/BookOpinions/BookOpinions';
 import { BookDetails } from '@/components/book/BookDetails/BookDetails';
 import styles from './styles.module.css'
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 interface BookProps{
   params: { id: string };
@@ -29,7 +31,8 @@ const getBookDB = async (bookId: string) => {
 
  const Book: NextPage<BookProps> = async ({params}) => {
   const bookId = params.id
-
+  const session = await getServerSession(authOptions); console.log({session});
+  
   let {book} = await getBookDB(bookId);
 
   if(!book){
