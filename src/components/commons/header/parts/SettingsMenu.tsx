@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import {useSession, signIn, signOut} from 'next-auth/react';
 
-import { IconButton, Typography, Menu, Tooltip, MenuItem } from '@mui/material';
+import { IconButton, Typography, Menu, Tooltip, MenuItem, Box } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Link from 'next/link';
 
@@ -24,7 +24,7 @@ export const SettingsMenu: FC = () =>{
    };
 
   return (
-    <div>
+   <Box sx={{ flexGrow: 0 }}>
        <Tooltip title="Ustawienia użytkownika">
          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -75,7 +75,7 @@ export const SettingsMenu: FC = () =>{
             </MenuItem>)
             }
       </Menu>
-    </div>
+    </Box>
   ) 
 }
 

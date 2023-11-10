@@ -1,17 +1,15 @@
 "use client";
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import { Toolbar, IconButton, Typography, Menu, Container} from '@mui/material';
+import { Toolbar, IconButton, Typography, Menu, Container, Box} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
 import { SettingsMenu } from './parts/SettingsMenu';
-import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+
+import { MainMenuList } from './parts/MainMenuList';
+import { SearchBook } from '../searchBook/SearchBook';
 
 export const Header = () => {
-   const {data: session} = useSession();
    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
  
    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -79,48 +77,9 @@ export const Header = () => {
             >
                MyBook
             </Typography>
-            <Box sx={{ 
-               flexGrow: 1, 
-               display: { xs: 'none', md: 'flex' },
-               marginLeft: "10px" 
-            }} >
-               <Button
-                  onClick={handleCloseNavMenu}
-                  className='mainMenu'
-               >
-                  <Link href="/">
-                     GŁÓWNA
-                  </Link>
-               </Button> 
-               <Button
-                  onClick={handleCloseNavMenu}
-                  className='mainMenu'
-               >
-                  <Link href="/forum">
-                     FORUM
-                  </Link>           
-               </Button>
-               <Button
-                  onClick={handleCloseNavMenu}
-                  className='mainMenu'
-               >
-                  <Link href="/users">
-                     UŻYTKOWNICY
-                  </Link>
-               </Button>
-               <Button
-                  onClick={handleCloseNavMenu}
-                  className='mainMenu'
-               >
-                  <Link href="/about">
-                     O NAS
-                  </Link>
-               </Button>
-            </Box>
-
-            <Box sx={{ flexGrow: 0 }}>
-               <SettingsMenu />
-            </Box>
+            <MainMenuList handleCloseNavMenu={handleCloseNavMenu}/>
+            <SearchBook />
+            <SettingsMenu />
          </Toolbar>
    </Container>
  </AppBar>
