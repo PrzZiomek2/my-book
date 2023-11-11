@@ -42,7 +42,7 @@ export const Header = () => {
                   height: "42px"
                }}
             >
-               MyBook
+               MyBooks
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -75,7 +75,7 @@ export const Header = () => {
                   textDecoration: 'none',
                }}
             >
-               MyBook
+               s
             </Typography>
             <MainMenuList handleCloseNavMenu={handleCloseNavMenu}/>
             <SearchBook />

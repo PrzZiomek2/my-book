@@ -7,7 +7,9 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { BookDefault, Opinion, OpinionRes } from '@/types/interfaces';
 import useSWR from 'swr';
 import { Box } from '@mui/material';
+import { urls } from '@/utils/urls';
 
+const {rootPath} = urls();
 interface BookRateModalProps {
    setOpenRateModal: React.Dispatch<React.SetStateAction<boolean>>;
    openRateModal: boolean;
@@ -19,7 +21,7 @@ interface BookRateModalProps {
 
 export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, openRateModal, authorId, authorName, bookId, book}) => {
 
-   const { data, mutate } = useSWR<{opinions: OpinionRes[]}>(`http://localhost:3000/api/opinion/${bookId}`);
+   const { data, mutate } = useSWR<{opinions: OpinionRes[]}>(`${rootPath}/api/opinion/${bookId}`);
    const [validateMsg, setValidateMsg] = useState(false);
 
    const [opinion, setOpinion] = useState<Opinion>({
@@ -40,13 +42,13 @@ export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, o
          setValidateMsg(true);
          return;
       } 
-      const opinionRes = await fetch(`http://localhost:3000/api/opinion/${bookId}`, {
+      const opinionRes = await fetch(`${rootPath}/api/opinion/${bookId}`, {
          method: "POST",
          body: JSON.stringify({opinion})
        })
        .catch(err => console.log("err when adding opinion", err));
 
-       const bookRes = await fetch(`http://localhost:3000/api/book/${book.id}`, {
+       const bookRes = await fetch(`${rootPath}/api/book/${book.id}`, {
          method: "POST",
          body: JSON.stringify({
            ...book,

@@ -7,6 +7,9 @@ import {RegisterForm} from '@/components/register/RegisterForm';
 import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
 import Container from '@mui/material/Container';
 import { AlertInfo } from '@/components/ui/AlertInfo';
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
 
 type FormValues = {
    name: string;
@@ -22,7 +25,7 @@ export default function Register() {
    const createAccount = async (data: SubmitHandler<FormValues>) => { 
       dispatch({type: ActionType.FETCH_INIT});
 
-      const res = await fetch("http://localhost:3000/api/user", {
+      const res = await fetch(`${rootPath}/api/user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

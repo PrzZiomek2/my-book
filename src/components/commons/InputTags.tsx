@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import Cancel from "@mui/icons-material/Cancel";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
@@ -22,11 +22,14 @@ export const TagCustom = ({ data, handleDelete }: TagCustomProps ) => {
         borderRadius: "5px"
       }}
     >
-      <Stack direction='row' gap={1}>
+      <Stack direction='row' gap={1} alignItems="center">
         <Typography>{data}</Typography>
         {handleDelete &&
           <Cancel
-            sx={{ cursor: "pointer" }}
+            sx={{ 
+              cursor: "pointer",
+              fontSize: "1rem"
+            }}
             onClick={() => {
               handleDelete(data);
             }}
@@ -39,10 +42,12 @@ export const TagCustom = ({ data, handleDelete }: TagCustomProps ) => {
 
 interface InputTagsProps{
   tags: string[];
-  setTags: React.Dispatch<React.SetStateAction<string[]>>
+  setTags: (tags: string[]) => void;
+  id: string;
+  label?: string; 
 }
 
-export const  InputTags = ({tags, setTags}: InputTagsProps) =>{
+export const  InputTags: FC<InputTagsProps> = ({tags, setTags, id, label}) =>{
   const tagRef = useRef<HTMLInputElement>();
 
   const handleDelete = (value: string) => {
@@ -52,46 +57,41 @@ export const  InputTags = ({tags, setTags}: InputTagsProps) =>{
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ 
+              margin: "0 0.2rem 0 0", 
+              display: "flex",
+              flexWrap: tags?.length > 2 ? "wrap" : "nowrap"
+            }}>
+            {tags.map((data, index) => {
+              return (
+                <TagCustom 
+                  data={data} 
+                  handleDelete={handleDelete} 
+                  key={index} 
+                />
+              );
+            })}
+          </Box>
         <TextField
           inputRef={tagRef}
           fullWidth
-          id="tags" 
-          name="tags"
-          label="Tagi" 
+          {...(label ? {label} : {})}
           variant="standard" 
           className="profile_form__input" 
-          placeholder={tags.length < 5 ? "Wpisz tutaj" : ""}
-          InputProps={{ 
-            startAdornment: (
-              <Box sx={{ 
-                margin: "0 0.2rem 0 0", 
-                display: "flex",
-                flexWrap: tags.length > 2 ? "wrap" : "nowrap"
-              }}>
-                {tags.map((data, index) => {
-                  return (
-                    <TagCustom 
-                      data={data} 
-                      handleDelete={handleDelete} 
-                      key={index} 
-                    />
-                  );
-                })}
-              </Box>
-            ),
-          }}
+          placeholder="Wpisz tutaj"
+          InputProps={{ id }}
         />
 
         <Button
           className='profile_tags-add' 
           onClick={() => {
             if(!tagRef.current) return;
-            setTags(prev => ({ ...prev, tags: [...tags, tagRef.current!.value]}));
+            setTags([...tags, tagRef.current!.value])
             tagRef.current.value = "";
           }} 
           variant="outlined"
         >
-          Dodaj
+          Dodaj 
         </Button>
     </Box>
   );

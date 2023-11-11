@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang='pl'>
       <Head>
-          <title>MyBook - aplikacja miłośników książek</title>
+          <title>MyBooks - aplikacja miłośników książek</title>
           <meta
             name="description"
             content="platforma dla wszystkich wielbicieli książek. Do przeglądania, oceniania i komentowania pozycji literackich"

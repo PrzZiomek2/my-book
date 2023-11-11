@@ -1,17 +1,17 @@
 import React from 'react';
 import { NextPage } from 'next';
 
-const Home: NextPage = () => {
- 
-  return (
-    <div className='home'>
-      <section>
+import Box from '@mui/material/Box';
 
-      </section>
-         
-      <section>
-      </section>        
-    </div>
+import { SuggestionsCriteria } from '@/components/home/suggestionsCriteria/SuggestionsCriteria';
+import { SuggestionsResults } from '@/components/home/suggestionsResults/SuggestionsResults';
+
+const Home: NextPage = () => {
+  return (
+    <Box>
+        <SuggestionsCriteria />
+        <SuggestionsResults />     
+    </Box>
   )
 }
 

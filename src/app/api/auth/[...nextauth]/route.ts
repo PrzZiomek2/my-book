@@ -1,6 +1,21 @@
-import NextAuth from 'next-auth'
+import NextAuth, {Session, User } from 'next-auth';
+import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from 'next-auth/providers/google';
+
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
+
+type JwtCallbackArgs = {
+   token: JWT;
+   user: User;
+};
+
+type SessionCallbackArgs = {
+   token: JWT;
+   session: Session;
+};
 
 export const authOptions = {
    providers: [
@@ -15,7 +30,7 @@ export const authOptions = {
          async authorize(credentials, req) {
             console.log({credentials});
             
-            const res = await fetch("http://localhost:3000/api/login", {
+            const res = await fetch(`${rootPath}/api/login`, {
                method: "POST",
                headers: { "Content-Type": "application/json" },
                body: JSON.stringify({
@@ -39,14 +54,14 @@ export const authOptions = {
        })
    ],
    callbacks: {
-      async jwt({token, user}) { console.log({user});
+      async jwt({token, user}: JwtCallbackArgs) { 
          if (user) {
             token.user = user;
          }
          return token;
       },
 
-      async session({session, user, token}) { 
+      async session({session, token}: SessionCallbackArgs) { 
          session.user = token.user; 
          
          return session;

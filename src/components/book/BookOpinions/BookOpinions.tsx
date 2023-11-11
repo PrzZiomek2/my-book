@@ -8,6 +8,9 @@ import RatingStars from '../../commons/RatingStarts';
 import useSWR from 'swr';
 import { CircularProgress } from '@mui/material';
 import styles from './styles.module.css'
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
 
 interface BookOpinionsProps{
    bookId: string;
@@ -15,7 +18,7 @@ interface BookOpinionsProps{
 
 export const BookOpinions: React.FC<BookOpinionsProps> = ({bookId}) => {
    const {data: session} = useSession();
-   const { data: opinionData, isLoading } = useSWR<{opinions: OpinionRes[]}>(`http://localhost:3000/api/opinion/${bookId}`);
+   const { data: opinionData, isLoading } = useSWR<{opinions: OpinionRes[]}>(`${rootPath}/api/opinion/${bookId}`);
 
    const userId = session?.user.user._id;
    const opinionsFound = opinionData?.opinions && opinionData?.opinions.length > 0;

@@ -1,6 +1,4 @@
-import { ThemeProvider } from '@mui/material/styles';
 import Providers from '@/components/Providers'
-import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 
 import { Inter } from 'next/font/google'
