@@ -1,12 +1,16 @@
 import React from 'react';
+ 
 import { NextPage } from 'next';
+import { getServerSession } from 'next-auth';
+
 import { Loader } from '@/utils/loader';
 import { BookOpinions } from '@/components/book/BookOpinions/BookOpinions';
 import { BookDetails } from '@/components/book/BookDetails/BookDetails';
 import styles from './styles.module.css'
-import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { urls } from '@/utils/urls';
 
+const {rootPath} = urls();
 interface BookProps{
   params: { id: string };
   book: {};
@@ -21,7 +25,7 @@ const getBookAPI = async (bookId: string) => {
 };
 
 const getBookDB = async (bookId: string) => {
-  const res = await fetch(`http://localhost:3000/api/book/${bookId}`)
+  const res = await fetch(`${rootPath}/api/book/${bookId}`)
   .catch(err => console.log("error when fetching book", err));
 
   const resJson = await res?.json(); console.log({resJson});

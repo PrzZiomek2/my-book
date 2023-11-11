@@ -2,6 +2,9 @@ import React from 'react'
 import { Opinion, OpinionRes } from '@/types/interfaces';
 import RatingStars from '../commons/RatingStarts';
 import useSWR from 'swr';
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
 
 interface BookStatsProps{
    className?: string;
@@ -12,7 +15,7 @@ interface BookStatsProps{
 
 export const BookStats: React.FC<BookStatsProps> = ({className, favouriteN, toReadN, bookId }) => {
 
-   const { data: opinionData } = useSWR<{opinions: OpinionRes[]}>(`http://localhost:3000/api/opinion/${bookId}`);
+   const { data: opinionData } = useSWR<{opinions: OpinionRes[]}>(`${rootPath}/api/opinion/${bookId}`);
 
    const rateSum = opinionData && opinionData.opinions
       .map(({opinion}) => opinion.rate)

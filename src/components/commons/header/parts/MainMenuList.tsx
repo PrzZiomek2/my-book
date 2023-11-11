@@ -36,14 +36,6 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
          onClick={handleCloseNavMenu}
          className='mainMenu'
       >
-         <Link href="/users">
-            UŻYTKOWNICY
-         </Link>
-      </Button>
-      <Button
-         onClick={handleCloseNavMenu}
-         className='mainMenu'
-      >
          <Link href="/about">
             O NAS
          </Link>

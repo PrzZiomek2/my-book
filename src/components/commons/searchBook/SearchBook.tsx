@@ -8,7 +8,6 @@ import TextField  from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,7 +15,7 @@ import * as yup from 'yup';
 import { setUrlParams } from '@/utils/handlers';
 
 type FormValues = {
-  searchQuery: string;
+  searchValue: string;
   searchType: string;
 }
 
@@ -26,7 +25,7 @@ export const SearchBook = () => {
   const searchParams = useSearchParams(); console.log({pathname}); 
 
   const schema = yup.object().shape({
-    searchQuery: yup.string().required('Pole wyszukiwarki nie może byc puste'),
+    searchValue: yup.string().required('Pole wyszukiwarki nie może byc puste'),
     searchType: yup.string()
         .required()
         .oneOf(["title", "author"])
@@ -38,10 +37,10 @@ export const SearchBook = () => {
 
   const onSubmitHandler = (data: FormValues, e) => {
     e.preventDefault();
-    
+
     const urlWithParams = setUrlParams(searchParams, {
       searchType: data.searchType,
-      searchQuery: data.searchQuery,
+      searchValue: data.searchValue,
     }); 
     
     router.push(`/results?${urlWithParams}`);
@@ -75,17 +74,16 @@ export const SearchBook = () => {
             )}
           />
           <Controller
-            name="searchQuery"
+            name="searchValue"
             control={control}
             render={({ field }) => (
               <TextField 
                 sx={{ 
                   flexGrow: 1, 
                   background: "white",
-                  width: "100%",
-                  maxWidth: "500px" 
+                  width: "500px",
                 }} 
-                placeholder="Wyszukaj pozycję" 
+                placeholder="Wyszukaj dowolną pozycję" 
                 {...field} 
               />
             )}

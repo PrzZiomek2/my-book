@@ -8,6 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import { BookDefault, BookType, CustomBook } from '@/types/interfaces';
 import { Loader } from '@/utils/loader';  
 import useSWR from 'swr';
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
 
 // TO DO: refactor, separate on two different 
 
@@ -22,7 +25,7 @@ interface BookActionsProps{
 export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
    const {data: session} = useSession();
    const userId = session?.user.user._id; 
-   const {data: customBook, mutate} = useSWR<{book: CustomBook}>(`http://localhost:3000/api/book/${book.id}`);
+   const {data: customBook, mutate} = useSWR<{book: CustomBook}>(`${rootPath}/api/book/${book.id}`);
 
    const currentBook = customBook?.book || book; 
   
@@ -36,7 +39,7 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
       
       setIsLoading(prev => ({[type]: true}));
 
-      const res = await fetch(`http://localhost:3000/api/user-books/${userId}`, {
+      const res = await fetch(`${rootPath}/api/user-books/${userId}`, {
         method: "POST",
         body: JSON.stringify({
           book: { ...currentBook, [`is_${type}`]: true }
@@ -52,7 +55,7 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
       
       const existingType = currentBook?.[type] || [];
       
-      const bookRes = await fetch(`http://localhost:3000/api/book/${currentBook.id}`, { 
+      const bookRes = await fetch(`${rootPath}/api/book/${currentBook.id}`, { 
          method: "POST", 
          body: JSON.stringify({
            ...currentBook,
@@ -74,7 +77,7 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
    return(
       <div className={className}>
          <Button onClick={() => handleAddBook(BookType.READ)} size="small">
-            <Loader isLoading={isLoading.read!}>
+            <Loader isLoading={isLoading.read!}> 
                <span>{isRead ? "Przeczytane" : "Do przeczytanych"}</span>
             </Loader>
          </Button>
