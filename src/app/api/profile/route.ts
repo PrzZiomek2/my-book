@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
    if(userExists){
      userUpdated = await db.collection("profiles").findOneAndUpdate({ id: body.id }, {$set: body});
-     console.log({userUpdated});
+
      return NextResponse.json({ message: "dane zaktualizowano", success: userUpdated.ok });
    }
 

@@ -26,7 +26,7 @@ export const ItemsList = ({children, className}) => {
          className={className}
          sx={{ 
             width: '100%', 
-            bgcolor: 'background.paper' 
+            maxWidth: "1200px"
          }}>
          {children}
       </List>

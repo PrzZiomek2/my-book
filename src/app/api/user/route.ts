@@ -12,7 +12,6 @@ export async function POST(req: Request) {
    const body: RequestBody = await req.json(); 
    const client = await clientPromise;
    const db = client.db("library");
-   console.log({body});
    
    const userExists = await db.collection("users").findOne({ email: body.email }); 
 

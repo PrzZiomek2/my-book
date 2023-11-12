@@ -9,7 +9,7 @@ interface TagCustomProps{
 
 export const TagCustom = ({ data, handleDelete }: TagCustomProps ) => {
   return (
-    <Box
+    <Box 
       sx={{
         background: "#205eb4",
         height: "100%",
@@ -56,7 +56,10 @@ export const  InputTags: FC<InputTagsProps> = ({tags, setTags, id, label}) =>{
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ 
+      flexGrow: 1,
+      marginTop: "6px"
+      }}>
         <Box sx={{ 
               margin: "0 0.2rem 0 0", 
               display: "flex",
@@ -84,6 +87,7 @@ export const  InputTags: FC<InputTagsProps> = ({tags, setTags, id, label}) =>{
 
         <Button
           className='profile_tags-add' 
+          sx={{marginTop: "12px"}}
           onClick={() => {
             if(!tagRef.current) return;
             setTags([...tags, tagRef.current!.value])

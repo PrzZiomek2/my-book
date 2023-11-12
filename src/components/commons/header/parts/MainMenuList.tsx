@@ -1,9 +1,7 @@
-import React from 'react'
-
-import Link from 'next/link'; 
+import React from 'react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import ButtonLink from '@/components/ui/ButtonLink';
 
 interface MainMenuListProps{
   handleCloseNavMenu: () => void;
@@ -16,30 +14,29 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
       display: { xs: 'none', md: 'flex' },
       marginLeft: "10px" 
    }} >
-      <Button
-         onClick={handleCloseNavMenu}
+      <ButtonLink 
+         linkHref="/" 
          className='mainMenu'
+         handleClick={() => handleCloseNavMenu()}
       >
-         <Link href="/">
-            GŁÓWNA
-         </Link>
-      </Button> 
-      <Button
-         onClick={handleCloseNavMenu}
+        GŁÓWNA
+      </ButtonLink>
+
+      <ButtonLink 
+         linkHref="/forum" 
          className='mainMenu'
+         handleClick={() => handleCloseNavMenu()}
       >
-         <Link href="/forum">
-            FORUM
-         </Link>           
-      </Button>
-      <Button
-         onClick={handleCloseNavMenu}
+        FORUM
+      </ButtonLink>
+
+      <ButtonLink 
+         linkHref="/about" 
          className='mainMenu'
+         handleClick={() => handleCloseNavMenu()}
       >
-         <Link href="/about">
-            O NAS
-         </Link>
-      </Button>
+        O NAS
+      </ButtonLink>
    </Box>
   )
 }

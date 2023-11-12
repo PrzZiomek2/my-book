@@ -8,7 +8,7 @@ import {
   Autocomplete,
   Button,
 } from '@mui/material';
-import { InputTags } from '@/components/commons/InputTags';
+import { InputTags } from '@/components/commons/inputTags/InputTags';
 
 type FormData = {
   readBooks: string[];
@@ -54,14 +54,14 @@ export const CriteriaForm = () => {
           control={control}
           defaultValue={[]}
           render={({ field }) => (
-            <div>
+            <Box sx={{ marginBottom: "25px" }}>
               <label htmlFor='tags'>Tagi</label>
               <InputTags 
                 id="tags"
                 setTags={tags => handleInputChange("tags", tags)}
                 tags={formData.tags}
               />
-            </div>
+            </Box>
           )}
         />
         <Controller
@@ -69,14 +69,14 @@ export const CriteriaForm = () => {
           control={control}
           defaultValue={[]}
           render={({ field }) => (
-            <div>
+            <Box sx={{ marginBottom: "25px" }}>
               <label htmlFor='readBooks'>Przeczytane książki</label>
               <InputTags 
                 id="readBooks"
                 setTags={read => handleInputChange("readBooks", read)}
                 tags={formData.readBooks}
               />
-            </div>
+            </Box>
           )}
         />
         <Controller
@@ -84,14 +84,14 @@ export const CriteriaForm = () => {
           control={control}
           defaultValue={[]}
           render={({ field }) => (
-            <div>
+            <Box sx={{ marginBottom: "25px" }}>
               <label htmlFor='favouriteBooks'>Ulubione książki</label>
               <InputTags 
                 id="favouriteBooks"
                 setTags={fav => handleInputChange("favouriteBooks", fav)}
                 tags={formData.favouriteBooks}
               />
-            </div>
+            </Box>
           )}
         />
         <Controller
@@ -99,7 +99,7 @@ export const CriteriaForm = () => {
             control={control}
             defaultValue={false}
             render={({ field }) => (
-            <div>
+            <Box sx={{ marginBottom: "25px" }}>
               <label htmlFor="isCreative">Kreatywnie</label>
               <Checkbox
                 {...field}
@@ -107,12 +107,12 @@ export const CriteriaForm = () => {
                 color="primary"
                 onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
               />
-            </div>
+            </Box>
             )}
         />  
         <Button 
           type="submit" 
-          variant="outlined" 
+          variant="contained" 
           sx={{ marginTop: '20px' }}
         >
           GOTOWE

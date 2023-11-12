@@ -1,6 +1,8 @@
 .details_image img{
-   object-fit: contain;
-   box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+   object-fit: cover;
+   box-shadow: 
+    0 1px 2px 0 rgba(60,64,67,.3), 
+    0 1px 3px 1px rgba(60,64,67,.15);
    border-radius: 4px;
  }
  
@@ -11,7 +13,9 @@
    width: 300px;
    height: 500px;
    flex-shrink: 0;
-   box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+   box-shadow: 
+    0 1px 2px 0 rgba(60,64,67,.3), 
+    0 1px 3px 1px rgba(60,64,67,.15);
  }
  
  .details_info_left{
@@ -29,10 +33,24 @@
    display: flex;
    flex-direction: column;
    gap: 10px;
+   align-items: center;
+   margin-top: 20px;
  }
+
+ .details_info_stats{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 100px;
+ }
+
+.details_info_stats_actions{
+  display: flex;
+  flex-direction: column;
+}
  
  .details_info_bottom{
-
+  margin-top: 30px;
  }
 
  .details_sub_info{
@@ -40,7 +58,7 @@
  }
 
  .details_sub_metadane{
-
+  margin-bottom: 20px;
  }
 
  .details_sub_price{
@@ -50,3 +68,8 @@
  .details_sub_similar{
 
  }
+
+.details_sub_links{
+  display: flex;
+  flex-direction: column;
+}
