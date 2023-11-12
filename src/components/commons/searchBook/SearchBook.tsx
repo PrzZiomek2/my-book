@@ -13,6 +13,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { setUrlParams } from '@/utils/handlers';
+import styles from './styles.module.css';
 
 type FormValues = {
   searchValue: string;
@@ -22,7 +23,7 @@ type FormValues = {
 export const SearchBook = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams(); console.log({pathname}); 
+  const searchParams = useSearchParams(); 
 
   const schema = yup.object().shape({
     searchValue: yup.string().required('Pole wyszukiwarki nie może byc puste'),
@@ -47,7 +48,10 @@ export const SearchBook = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <form 
+      className={styles.searchBookForm}
+      onSubmit={handleSubmit(onSubmitHandler)}
+    >
         <Box
           sx={{
             display: "flex",
@@ -65,7 +69,8 @@ export const SearchBook = () => {
                 {...field}
                 sx={{ 
                   width: '150px',
-                  background: "white" 
+                  background: "aliceblue",
+                  height: "50px"
                 }}
               >
                 <MenuItem value="title">Tytuł</MenuItem>
@@ -80,9 +85,13 @@ export const SearchBook = () => {
               <TextField 
                 sx={{ 
                   flexGrow: 1, 
-                  background: "white",
+                  background: "aliceblue",
                   width: "500px",
                 }} 
+                InputProps={{ 
+                  sx: {
+                    height: "50px"
+                } }}
                 placeholder="Wyszukaj dowolną pozycję" 
                 {...field} 
               />
@@ -93,9 +102,9 @@ export const SearchBook = () => {
             variant="outlined"  
             color='secondary'      
             sx={{
-              height: '61px',
+              height: '50px',
               padding: '5px 30px',
-              background: "white"
+              background: "aliceblue"
             }}
           >
             Szukaj

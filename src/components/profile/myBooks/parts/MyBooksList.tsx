@@ -29,7 +29,11 @@ export const  MyBooksList: FC<MyBooksListProps> = ({flag}) =>{
    
 
   return (
-   <ResultsList resLoading={isLoading} results={bookList} />
+   <ResultsList 
+      resLoading={isLoading} 
+      results={bookList} 
+      noDescription
+   />
   )
 }
 

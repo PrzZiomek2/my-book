@@ -10,6 +10,53 @@ const theme = createTheme({
             }
          }
       },
+      MuiList: {
+         styleOverrides: {
+            root: {
+               backgroundColor: "transparent"
+            }
+         }
+      },
+      MuiAccordion: {
+         styleOverrides: {
+            root: {
+               "&.Mui-expanded": {
+                  marginBottom: "30px"
+               }
+            }
+         }
+      },
+      MuiAccordionSummary: {
+         styleOverrides: {
+            root: {
+               borderBottom: "1px solid blue",
+               "&:hover": {
+                  background: "#ccc8f7"
+               }
+            }
+         }
+      },
+      MuiAccordionDetails: {
+         styleOverrides: {
+            root: {
+               padding: "20px 16px",
+            }
+         }
+      },
+      MuiOutlinedInput: {
+         styleOverrides: {
+            input: {
+               padding: "4px 10px 5px"
+            }
+         }
+      },
+      MuiIconButton: {
+         styleOverrides: {
+            root: {
+               width: "fit-content"
+            }
+         }
+      },
       MuiButton: {
          styleOverrides: {
             root: {

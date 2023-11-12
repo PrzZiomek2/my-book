@@ -23,16 +23,18 @@ const getUserBooksData = async (userId: string) => {
   return resJson;
 };  
 
-export const SuggestionsResults = async () => {
+const SuggestionsResults = async () => {
   const session = await getServerSession(authOptions); 
-  const userId = session.user.user._id; 
+  const userId = session?.user.user._id; 
 
   const profileData = await getProfileData(userId); 
-  const profileId = profileData.profile.id; 
+  const profileId = profileData.profile?.id; 
   
-  const userBooks = await getUserBooksData(profileId); console.log({userBooks});
+  const userBooks = await getUserBooksData(profileId); console.log({userBooks, profileData, userId});
 
   return (
     <section>SuggestionsResults</section>
   )
 }
+
+export default SuggestionsResults;

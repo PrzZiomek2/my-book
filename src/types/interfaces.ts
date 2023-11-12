@@ -16,6 +16,9 @@ export interface BookDefault {
       imageLinks: {
          smallThumbnail: string;
          thumbnail: string;
+         small: string;
+         medium: string;
+         large: string;
       };
       previewLink: string;
    }
@@ -34,7 +37,12 @@ export interface BookDetailed {
      saleability: string;
    };
    volumeInfo: {
-     imageLinks: {thumbnail: string}
+     imageLinks: {
+      thumbnail: string;
+      small: string;
+      medium: string;
+      large: string;
+   }
      title: string;
      description: string;
      canonicalVolumeLink: string;

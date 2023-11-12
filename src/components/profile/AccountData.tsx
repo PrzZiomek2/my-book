@@ -4,8 +4,10 @@ import React, {useEffect, useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/navigation';
-import { ImageUpload } from '../ui/ImageUpload';
 import { useSession } from 'next-auth/react';
+import { urls } from '@/utils/urls';
+
+const {rootPath} = urls();
 
 export const AccountData = () => {
    const router = useRouter();
@@ -16,9 +18,6 @@ export const AccountData = () => {
       email: "", 
       password: "",
    });
-
-   console.log({session});
-   
    
    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>{
       setFormData(prev => ({
@@ -29,7 +28,7 @@ export const AccountData = () => {
    
    const handleAddUserSubmit = async () => {   
 
-      const res = await fetch("http://localhost:3000/api/profile", {
+      const res = await fetch(`${rootPath}/api/profile`, {
         method: "POST",
         body: JSON.stringify({
           name: formData.name, 

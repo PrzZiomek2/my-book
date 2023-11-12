@@ -28,7 +28,6 @@ export const authOptions = {
          },
 
          async authorize(credentials, req) {
-            console.log({credentials});
             
             const res = await fetch(`${rootPath}/api/login`, {
                method: "POST",

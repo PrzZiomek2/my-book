@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 import truncate from 'lodash.truncate'
@@ -20,10 +19,10 @@ import { Loader } from '@/utils/loader';
 interface ResultsListProps{
    results: BookDefault[];
    resLoading: boolean;
+   noDescription?: boolean;
 }
 
-export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading}) => {
-   console.log({results});
+export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, noDescription}) => {
 
    return (
          <ItemsList>
@@ -36,7 +35,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading}) =
                         separator: /,? +/,
                      });
                      const titleFragment = truncate(volumeInfo.title, {
-                        length: 50,
+                        length: 80,
                         separator: /,? +/,
                      });
                      const book = {
@@ -85,7 +84,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading}) =
                                  </Typography>
                                  <Typography variant="body2" color="text.secondary">
                                     <p>{volumeInfo.subtitle}</p>
-                                    <p>{descrFragment}</p>
+                                    {noDescription ? null : <p>{descrFragment}</p>}
                                  </Typography>
                               </CardContent>
                               <CardActions sx={{flexDirection: "column"}}>

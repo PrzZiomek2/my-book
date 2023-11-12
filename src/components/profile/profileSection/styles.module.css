@@ -68,3 +68,16 @@
    flex: 1;
  }
  
+ .info_section__label{
+  font-weight: 600;
+  color: #34343d;
+  text-transform: capitalize;
+ }
+
+ .info_section{
+  margin-bottom: 30px;
+ }
+
+ .info_content{
+  margin-top: 10px;
+ }

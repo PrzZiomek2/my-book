@@ -49,7 +49,7 @@ export const SettingsMenu: FC = () =>{
          open={Boolean(anchorElUser)}
          onClose={handleCloseUserMenu}
        >
-         {isUserLogged && <p>Witaj {session.user?.user?.name}!</p>}
+         {isUserLogged && <Typography textAlign="center">Witaj {session.user?.user?.name}!</Typography>}
          {isUserLogged && ( 
             <MenuItem onClick={handleCloseUserMenu}>
                <Link aria-current="page" href="/profile">

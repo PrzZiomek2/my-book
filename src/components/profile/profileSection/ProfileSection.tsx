@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { ImageUpload } from '../../ui/ImageUpload';
 import Image from 'next/image';
 import defaultImg from '../../../../public/profile.jpg';
-import { InputTags, TagCustom } from '../../commons/InputTags';
+import { InputTags, TagCustom } from '../../commons/inputTags/InputTags';
 import CircularProgress from '@mui/material/CircularProgress';
 import { MyBooks } from '../myBooks/MyBooks';
 import { AlertInfo } from '@/components/ui/AlertInfo';
@@ -53,7 +53,7 @@ export const ProfileSection: React.FC = () => {
    
    const handleAddUserSubmit = async () => {
 
-      const res = await fetch("http://localhost:3000/api/profile", {
+      const res = await fetch(`${rootPath}/api/profile`, {
         method: "POST",
         body: JSON.stringify({
           name: formData.name, 
@@ -70,13 +70,11 @@ export const ProfileSection: React.FC = () => {
       }
    };
 
-   const avatar = formData.image || defaultImg; console.log({formData});
-   
+   const avatar = formData.image || defaultImg; 
 
    return (
       <div className={styles.wrapper}>
         <section className={styles.info}>
-         <h4>Informacje o mnie</h4>
          <AlertInfo expand={!!info} type='success' content={info} />
             <Suspense fallback={<CircularProgress />}>
                <>
@@ -119,7 +117,7 @@ export const ProfileSection: React.FC = () => {
                </div>
          
                <div className={styles.info_bottom}>
-                  <div>
+                  <div className={styles.info_section}>
                      {edit ? 
                         <TextField 
                            id="name" 
@@ -131,12 +129,12 @@ export const ProfileSection: React.FC = () => {
                            onChange={handleInputChange}
                         /> : 
                         <>
-                           <span>Imię</span>
-                           <div>{formData.name}</div>
+                           <span className={styles.info_section__label}>Imię</span>
+                           <div className={styles.info_content}>{formData.name}</div>
                         </>
                      }
                   </div>
-                  <div>
+                  <div className={styles.info_section}>
                      {edit ? 
                         <TextField 
                            id="description" 
@@ -150,14 +148,15 @@ export const ProfileSection: React.FC = () => {
                            onChange={handleInputChange}
                         /> : 
                         <>
-                           <span>Opis</span>
-                           <div>{formData.description}</div>
+                           <span className={styles.info_section__label}>Opis</span>
+                           <div className={styles.info_content}>{formData.description}</div>
                         </>
                      }
                   </div>
-                  <div>
+                  <div className={styles.info_section}>
                      {edit ? 
                         <InputTags 
+                           id='tags'
                            setTags={tags => setFormData((prev) => ({
                               ...prev,
                               tags
@@ -165,7 +164,7 @@ export const ProfileSection: React.FC = () => {
                            tags={formData.tags}
                         /> : 
                         <>
-                           <span>Tagi</span>
+                           <span className={styles.info_section__label}>Tagi</span>
                            <div className={styles.tags_list}>
                               {formData.tags.map((data, index) => {
                                  return (
