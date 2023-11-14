@@ -5,7 +5,7 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ req, token }) => {
-        if (req.nextUrl.pathname.startsWith('/suggestions') && token === null) {
+        if (req.nextUrl.pathname.startsWith('/suggestions-results') && token === null) {
           return false
         };
         
