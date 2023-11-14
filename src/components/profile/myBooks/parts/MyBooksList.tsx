@@ -25,8 +25,7 @@ export const  MyBooksList: FC<MyBooksListProps> = ({flag}) =>{
          const read = books.filter(book => book?.[flag]);
          setBookList(read)
       }
-   }, [data]); console.log("read", data);
-   
+   }, [data]); 
 
   return (
    <ResultsList 

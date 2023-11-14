@@ -29,6 +29,6 @@ export async function POST(req: Request) {
    }
 
    const addedUser = await db.collection("users").insertOne(newUser); 
-   const {password, ...user} = addedUser; console.log({addedUser});
+   const {password, ...user} = addedUser; 
    return new Response(JSON.stringify(user)); 
 }

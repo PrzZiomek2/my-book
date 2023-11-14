@@ -96,3 +96,24 @@ export interface OpinionRes{
    opinion: Opinion;
    timestamp?: Date; 
 }  
+
+export interface Profile{
+   _id: string;
+   name: string;
+   description: string;
+   id: string;
+   image: string;
+   tags: string[]
+}
+
+export interface UserPreferences{
+   tags: string[];
+   read: string[];
+   favourite: string[];
+}
+
+export interface UserPreferencesParsed{
+   tags: string;
+   read: string;
+   favourite: string;
+}

@@ -12,7 +12,7 @@ export const DefaultCriteria = () => {
       </Typography>
       <ButtonLink
          linkHref={{
-          pathname: '/suggestions',
+          pathname: '/suggestions-results',
           query: { fromProfile: true },
         }}
          variant="contained"
