@@ -64,3 +64,6 @@ const reducer = (state = initialState, action: Action) => {
 
 
 export const useFetchReducer = () => useReducer(reducer, initialState);
+
+// TO DO: types for useREDUCER 
+// export const useFetchReducer = <T>() => useReducer<Reducer<InitialState<T>, Action>>(reducer, initialState);

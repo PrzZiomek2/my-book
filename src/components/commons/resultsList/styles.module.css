@@ -8,7 +8,7 @@
   color: lightslategrey;
   font-size: 0.8rem;
   text-align: center;
-  padding-top: 13.5%;
+  padding-top: 75px;
 }
 
 .book_list_item {
@@ -17,7 +17,6 @@
 }
 
 .book_list_item_img {
-  object-fit: contain;
   box-shadow: 
     0 1px 2px 0 rgba(60, 64, 67, 0.3), 
     0 1px 3px 1px rgba(60, 64, 67, 0.15);

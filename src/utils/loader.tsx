@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+
+import Box from '@mui/material/Box';
+
 import CircularProgress from '@mui/material/CircularProgress';
 
 interface LoaderProps {
@@ -8,6 +11,18 @@ interface LoaderProps {
 
 export const Loader: React.FC<LoaderProps> = ({children, isLoading}) => {
 
-   return (isLoading ? <CircularProgress /> : <>{children}</>)
-   
-}
+   return (
+      isLoading ? ( 
+         <Box sx={{
+            width: "100%", 
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+         }}>
+            <CircularProgress />
+         </Box>
+      ) : 
+      <>{children}</>
+   )
+   }

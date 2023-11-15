@@ -1,6 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
-import { log } from 'console';
+import Image from 'next/image
 
 interface ImageProps {
    className: string;
@@ -11,7 +10,6 @@ interface ImageProps {
 }
 
 const ImageCustom = (props: ImageProps) => {
-log("test");
   return (
     <div>
       <Image

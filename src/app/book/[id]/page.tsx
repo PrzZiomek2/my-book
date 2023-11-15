@@ -38,9 +38,8 @@ const getBookDB = async (bookId: string) => {
 
   if(!book){
     book = await getBookAPI(bookId); 
-  }; console.log({bookim: book.volumeInfo.imageLinks});
+  }; 
   
-
   return (
     <div className={styles.details_page}>
         <Loader isLoading={false}>

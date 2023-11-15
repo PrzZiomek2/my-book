@@ -28,10 +28,10 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
          <ItemsList>
             <Loader isLoading={resLoading}>
                {results?.length > 0 && results?.map(({id, volumeInfo, ...restInfo}) => { 
-               
+                     if(!id) return null;
                      const coverImage = volumeInfo.imageLinks?.thumbnail;
                      const descrFragment = truncate(volumeInfo.description, {
-                        length: 200,
+                        length: 300,
                         separator: /,? +/,
                      });
                      const titleFragment = truncate(volumeInfo.title, {
@@ -41,7 +41,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
                      const book = {
                         id, 
                         volumeInfo,
-                        ...restInfo
+                        ...restInfo 
                      };
                      
                      return(
@@ -65,7 +65,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
                                     src={coverImage}  
                                     width={140}
                                     className={styles.book_list_item_img}
-                                    height={200}
+                                    height={190}
                                     alt='okładka'
                                  /> :
                                  <div className={styles.cover_replace}>Podgląd niedostępny</div>}
