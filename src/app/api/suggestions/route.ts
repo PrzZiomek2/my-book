@@ -22,7 +22,8 @@ export async function POST(req: Request) {
       }]
     }).catch(err => console.log(err)); 
     
-    const {choices} = completion || {};
+    const {choices} = completion || {}; 
+    
 
    return NextResponse.json({ completion: choices?.[0].message.content});
 };
