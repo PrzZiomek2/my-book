@@ -2,7 +2,7 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
 import { urls } from '@/utils/urls';
-import { BookDefault, UserPreferencesParsed } from '@/types/interfaces';
+import { UserPreferencesParsed } from '@/types/interfaces';
 import { ResultsList } from '../commons/resultsList/ResultsList';
 import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
 

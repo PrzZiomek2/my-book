@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabs from '@/components/ui/Tabs';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import { MyBooksList } from './parts/MyBooksList';
 
  export const MyBooks = () => {

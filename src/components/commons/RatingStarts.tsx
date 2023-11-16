@@ -1,4 +1,4 @@
-import React, {FC, useContext, useLayoutEffect, useState} from 'react';
+import React, {FC, useLayoutEffect, useState} from 'react';
 
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';

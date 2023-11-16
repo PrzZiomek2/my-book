@@ -4,10 +4,11 @@ import { getServerSession } from 'next-auth';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { urls } from '@/utils/urls';
-import { CustomBook, Profile, UserPreferences, UserPreferencesParsed } from '@/types/interfaces';
+import { CustomBook, Profile } from '@/types/interfaces';
 import { SuggestionsResults } from '@/components/suggestions/SuggestionsResults';
 import { getApiData, getBooksInfo } from '@/utils/handlers';
-import { Box } from '@mui/material';
+
+import Box from '@mui/material/Box';
 
 const {rootPath} = urls();
 

@@ -1,7 +1,6 @@
 import clientPromise from '@/mongoDB/utils/mongoClient';
 import { NextResponse } from 'next/server';
 import { Opinion} from '@/types/interfaces';
-import { Timestamp } from 'mongodb';
 
 export async function POST(req: Request, {params}:{params: {id: string}}) {
    const opinion: Opinion = await req.json(); 

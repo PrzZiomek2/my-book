@@ -1,7 +1,9 @@
 "use client";
-import React, {Dispatch, SetStateAction} from 'react'
-import { Button, Box } from "@mui/material";
+import React from 'react'
 import { useEffect, useState } from "react";
+
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 interface ImageUploadProps {
   setUploadedImage: React.Dispatch<React.SetStateAction<{

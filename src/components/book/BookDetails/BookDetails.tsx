@@ -1,17 +1,16 @@
 "use client"
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import striptags from 'striptags'
 import Button from '@mui/material/Button';
 import { useSession } from 'next-auth/react';
-import LaunchIcon from '@mui/icons-material/Launch';
 import { CustomBook } from '@/types/interfaces';
 import { BookActions } from '@/components/commons/BookActions';
 import { BookRateModal } from '@/components/book/BookRateModal';
 import { BookStats } from '@/components/book/BookStats/BookStats';
 import styles from './styles.module.css'
+
 import { ExternalLink } from '@/components/ui/ExternalLink';
 
 interface BookDetailsProps{

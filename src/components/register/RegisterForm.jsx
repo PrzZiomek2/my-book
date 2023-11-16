@@ -2,12 +2,11 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {
-  FormControl,
-  Button,
-  TextField,
-  Box
-} from '@mui/material';
+
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 export const RegisterForm = ({ createAccount }) => {
   const schema = yup.object().shape({
