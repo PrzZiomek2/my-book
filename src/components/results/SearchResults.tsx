@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ResultsList } from '@/components/commons/resultsList/ResultsList'
 import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
 import { useSearchParams } from 'next/navigation'

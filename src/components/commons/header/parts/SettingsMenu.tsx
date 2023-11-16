@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
-import {useSession, signIn, signOut} from 'next-auth/react';
 
-import { IconButton, Typography, Menu, Tooltip, MenuItem, Box } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
+import {useSession, signIn, signOut} from 'next-auth/react';
 import Link from 'next/link';
 
-interface SettingsProps {
-
-}
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 
 export const SettingsMenu: FC = () =>{
 

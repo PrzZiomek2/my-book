@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { NextPage } from 'next';
 
 import Tabs from '@/components/ui/Tabs';
 import { ProfileSection } from '@/components/profile/profileSection/ProfileSection';
 import { AccountData } from '@/components/profile/AccountData';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import styles from './styles.module.css'
 
  const Profile: NextPage = () => {

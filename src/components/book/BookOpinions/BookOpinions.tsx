@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { OpinionRes } from '@/types/interfaces';
 import RatingStars from '../../commons/RatingStarts';
 import useSWR from 'swr';
-import { CircularProgress } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import styles from './styles.module.css'
 import { urls } from '@/utils/urls';
 
