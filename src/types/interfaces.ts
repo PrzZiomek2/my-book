@@ -117,3 +117,10 @@ export interface UserPreferencesParsed{
    read: string;
    favourite: string;
 }
+
+export interface ProfileFormData {
+   name: string;
+   description: string;
+   image: string;
+   tags: string[]   
+}

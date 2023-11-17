@@ -14,22 +14,17 @@ import { MyBooks } from '../myBooks/MyBooks';
 import { AlertInfo } from '@/components/ui/AlertInfo';
 import styles from './styles.module.css';
 import { urls } from '@/utils/urls';
+import { ProfileTags } from './parts/ProfileTags';
+import { ProfileFormData } from '@/types/interfaces';
 
 const {rootPath} = urls();
-
-type FormData = {
-   name: string;
-   description: string;
-   image: string;
-   tags: string[]   
-}
 
 export const ProfileSection: React.FC = () => {
    const {data: session} = useSession();
    const [edit, setEdit] = useState(false);
    const [selectedImg, setSelectedImg] = useState("");
    const [info, setInfo] = useState("");
-   const [formData, setFormData] = useState<FormData>({
+   const [formData, setFormData] = useState<ProfileFormData>({
       name: "", 
       description: "", 
       image: "",
@@ -51,7 +46,7 @@ export const ProfileSection: React.FC = () => {
       }))
    }
    
-   const handleAddUserSubmit = async () => {
+   const handleAddUserSubmit = async () => { 
 
       const res = await fetch(`${rootPath}/api/profile`, {
         method: "POST",
@@ -155,13 +150,10 @@ export const ProfileSection: React.FC = () => {
                   </div>
                   <div className={styles.info_section}>
                      {edit ? 
-                        <InputTags 
-                           id='tags'
-                           setTags={tags => setFormData((prev) => ({
-                              ...prev,
-                              tags
-                           }))}
+                        <ProfileTags 
+                           setFormData={setFormData}
                            tags={formData.tags}
+                           description={formData.description}
                         /> : 
                         <>
                            <span className={styles.info_section__label}>Tagi</span>

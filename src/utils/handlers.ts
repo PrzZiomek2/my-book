@@ -25,3 +25,4 @@ export const getApiData = async <T>(url: string): Promise<T> => {
   
   return resJson;
 };  
+

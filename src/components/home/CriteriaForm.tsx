@@ -21,7 +21,6 @@ export const CriteriaForm = () => {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    
   };
 
   const [formData, setFormData] = useState<FormData>({
@@ -113,7 +112,7 @@ export const CriteriaForm = () => {
           variant="contained" 
           sx={{ marginTop: '20px' }}
         >
-          GOTOWE
+          SPRAWDŹ
         </Button>
       </Box>
     </form>
