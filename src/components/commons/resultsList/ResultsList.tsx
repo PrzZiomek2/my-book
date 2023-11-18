@@ -8,6 +8,7 @@ import truncate from 'lodash.truncate'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { BookDefault } from '@/types/interfaces';
 
@@ -18,7 +19,7 @@ import { Loader } from '@/utils/loader';
 
 interface ResultsListProps{
    results: BookDefault[];
-   resLoading: boolean;
+   resLoading?: boolean;
    noDescription?: boolean;
 }
 
@@ -69,7 +70,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
                                     alt='okładka'
                                  /> :
                                  <div className={styles.cover_replace}>Podgląd niedostępny</div>}
-                              <CardContent>
+                              <CardContent sx={{flexGrow: 1}}>
                                  <Typography 
                                     gutterBottom variant="h5" 
                                     component="div"
@@ -81,10 +82,10 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
                                  >
                                     <Link className={styles.book_title_link} href={`/book/${id}`}>{titleFragment}</Link>
                                     <span className={styles.book_authors}>{volumeInfo.authors?.slice(0, 2).join(",")}</span>
-                                 </Typography>
+                                 </Typography>   
                                  <Typography variant="body2" color="text.secondary">
-                                    <p>{volumeInfo.subtitle}</p>
-                                    {noDescription ? null : <p>{descrFragment}</p>}
+                                    <Box>{volumeInfo.subtitle}</Box>
+                                    {noDescription ? null : <Box>{descrFragment}</Box>}
                                  </Typography>
                               </CardContent>
                               <CardActions sx={{flexDirection: "column"}}>

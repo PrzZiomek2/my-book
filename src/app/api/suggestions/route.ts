@@ -6,7 +6,7 @@ import { giveSuggestionsOnUserProfile } from '@/utils/chatCommands';
 
 export async function POST(req: Request) {
    const body: UserPreferencesParsed = await req.json(); 
-   const {tags, read, favourite} = body;
+   const {tags, read, favourite, temperature} = body;
 
    const content = giveSuggestionsOnUserProfile({
       tags, 
@@ -15,9 +15,11 @@ export async function POST(req: Request) {
    });
 
    const completion = await getOpenaiCompletion({
-      content
+      content,
+      temperature
    })
    .catch(err => console.log(err)); 
+   
 
    return NextResponse.json({ completion });
 };

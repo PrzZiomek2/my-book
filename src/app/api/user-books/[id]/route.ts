@@ -7,6 +7,8 @@ interface RequestBody {
    book: CustomBook;
 }
 
+// TO DO: refactor method and routes structure
+
 export async function POST(req: Request, {params}:{params: {id: string}}) {
    const { book }: RequestBody = await req.json(); 
    const userId = params.id; 
