@@ -116,6 +116,8 @@ export interface UserPreferencesParsed{
    tags: string;
    read: string;
    favourite: string;
+   isCreative?: boolean
+   temperature?: number;
 }
 
 export interface ProfileFormData {
@@ -124,3 +126,10 @@ export interface ProfileFormData {
    image: string;
    tags: string[]   
 }
+
+export type CriteriaFormData = {
+   readBooks: string[];
+   favouriteBooks: string[];
+   tags: string[]   
+   isCreative: boolean;
+ }

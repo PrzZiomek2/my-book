@@ -11,13 +11,24 @@ interface SuggestionsResultsProps{
   tags: string;
   read: string;
   favourite: string;
-}
+  temperature: number;
+} 
 
-export const SuggestionsResults: FC<SuggestionsResultsProps> = ({tags, read, favourite}) => {
+export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
+  tags, 
+  read, 
+  favourite, 
+  temperature
+}) => {
   const [suggestionNames, setSuggestionNames ] = useState<string[]>([]);
   const [booksState, dispatch] = useFetchReducer();
 
-  const profileMemoized = useMemo(() => ({favourite, read, tags}), [favourite, read, tags]);
+  const profileMemoized = useMemo(() => ({
+    favourite,
+    read, 
+    tags,
+    temperature
+  }), [favourite, read, tags, temperature]);
 
   useEffect(() => {
     dispatch({type: ActionType.FETCH_INIT}); 
@@ -36,19 +47,20 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({tags, read, fav
       });
     
       const resJson = await res?.json(); 
-      const resObj = JSON.parse(resJson.completion); 
+      const resObj = JSON.parse(resJson.completion); console.log({suggestionNamesval: resObj?.words});
       
       if(resJson){
-        setSuggestionNames(Object.values(resObj));
+        setSuggestionNames(Object.values(resObj?.words));
       }; 
     }; 
     
     fetchUserSuggestions(profileMemoized);
 
-  }, [profileMemoized]); 
+  }, [profileMemoized]); console.log({suggestionNames});
+  
   
   useEffect(() => { 
-    if(!suggestionNames.length || !Array.isArray(suggestionNames)) return;
+    if(!suggestionNames.length && !Array.isArray(suggestionNames)) return;
 
     const queries = suggestionNames && suggestionNames?.map(pair => {
       const [author, title] = pair?.split(':');

@@ -50,7 +50,7 @@ export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, o
        })
        .catch(err => console.log("err when adding opinion", err));
 
-       const bookRes = await fetch(`${rootPath}/api/book/${book.id}`, {
+       const bookRes = await fetch(`${rootPath}/api/book/${book?.id}`, {
          method: "POST",
          body: JSON.stringify({
            ...book,

@@ -17,18 +17,18 @@ export const metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
-      <Providers>
-        <ThemeRegistry options={{ key: 'mui' }}>
-          <body>
-            <Header />
-            <Container>
-              <main>
-                {children}
-            </main>
-            </Container>
-          </body>
-        </ThemeRegistry>
-      </Providers>
+      <body>
+        <Providers>
+          <ThemeRegistry options={{ key: 'mui' }}>
+              <Header />
+              <Container>
+                <main>
+                  {children}
+              </main>
+              </Container>  
+          </ThemeRegistry>
+        </Providers>
+      </body>
     </html>
   )
 }

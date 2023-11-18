@@ -6,7 +6,7 @@ export const giveSuggestionsOnUserProfile = ({
    favourite
 }: UserPreferencesParsed) => `  
    na podstawie danych podaj listę 15 najbardziej trafnych tytułów książek. 
-   lista jako tablica js stringów, zapisana w json, string w formie "autor:tytuł" lub tylko autor lub tylko tytuł.
+   lista jako tablica js stringów, zapisana w json, tablica jako words=[string1, string2, ...], string w formie "autor:tytuł" lub tylko autor lub tylko tytuł.
    tytuły na liście muszą się różnić od tych podanych.dane:książki przeczytane - ${read}.książki ulubione - ${favourite}.
    Zainteresowania - ${tags}
 `;
