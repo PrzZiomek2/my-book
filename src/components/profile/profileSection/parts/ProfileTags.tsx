@@ -80,7 +80,7 @@ export const ProfileTags: FC<ProfileTagsProps> = ({setFormData, tags, descriptio
           START
         </Button>
         <Typography sx={{fontSize: "0.8rem"}}>
-            Stwórz tagi na podstawie opisu z twojego profilu, używając AI.
+            Stwórz tagi na podstawie opisu z twojego profilu.
         </Typography>
       </Box>
       <Divider sx={{marginBottom: "17px"}} />

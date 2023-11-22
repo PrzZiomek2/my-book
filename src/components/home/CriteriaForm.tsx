@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import { CriteriaFormData } from '@/types/interfaces';
 import ButtonLink from '../ui/ButtonLink';
 import useSWR from 'swr';
+import { CircularProgress } from '@mui/material';
 
 const {rootPath} = urls();
 
@@ -58,39 +59,41 @@ export const CriteriaForm = () => {
           margin: '20px 0',
         }}
       >
-        <Box sx={{ marginBottom: "25px" }}>
-          <label htmlFor='tags'>Tagi</label>
-          <InputTags 
-            id="tags"
-            setTags={tags => handleInputChange("tags", tags)}
-            tags={formData.tags}
-          />
-        </Box>
-        <Box sx={{ marginBottom: "25px" }}>
-          <label htmlFor='readBooks'>Przeczytane książki</label>
-          <InputTags 
-            id="readBooks"
-            setTags={read => handleInputChange("readBooks", read)}
-            tags={formData.readBooks}
-          />
-        </Box>
-        <Box sx={{ marginBottom: "25px" }}>
-          <label htmlFor='favouriteBooks'>Ulubione książki</label>
-          <InputTags 
-            id="favouriteBooks"
-            setTags={fav => handleInputChange("favouriteBooks", fav)}
-            tags={formData.favouriteBooks}
-          />
-        </Box>
-        <Box sx={{ marginBottom: "25px" }}>
-          <label htmlFor="isCreative">Kreatywnie</label>
-          <Checkbox
-            id='isCreative'
-            color="primary"
-            value={formData.isCreative}
-            onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
-          />
-        </Box>
+        <Suspense fallback={<CircularProgress />}>
+          <Box sx={{ marginBottom: "25px" }}>
+            <label htmlFor='tags'>Tagi</label>
+            <InputTags 
+              id="tags"
+              setTags={tags => handleInputChange("tags", tags)}
+              tags={formData.tags}
+            />
+          </Box>
+          <Box sx={{ marginBottom: "25px" }}>
+            <label htmlFor='readBooks'>Przeczytane książki</label>
+            <InputTags 
+              id="readBooks"
+              setTags={read => handleInputChange("readBooks", read)}
+              tags={formData.readBooks}
+            />
+          </Box>
+          <Box sx={{ marginBottom: "25px" }}>
+            <label htmlFor='favouriteBooks'>Ulubione książki</label>
+            <InputTags 
+              id="favouriteBooks"
+              setTags={fav => handleInputChange("favouriteBooks", fav)}
+              tags={formData.favouriteBooks}
+            />
+          </Box>
+          <Box sx={{ marginBottom: "25px" }}>
+            <label htmlFor="isCreative">Kreatywnie</label>
+            <Checkbox
+              id='isCreative'
+              color="primary"
+              value={formData.isCreative}
+              onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
+            />
+          </Box>
+        </Suspense>
         <ButtonLink
           type="submit" 
           variant="contained" 

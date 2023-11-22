@@ -23,11 +23,11 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
       </ButtonLink>
 
       <ButtonLink 
-         linkHref="/forum" 
+         linkHref="/ranking" 
          className='mainMenu'
          handleClick={() => handleCloseNavMenu()}
       >
-        FORUM
+        RANKING
       </ButtonLink>
 
       <ButtonLink 
