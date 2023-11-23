@@ -47,7 +47,7 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
       });
     
       const resJson = await res?.json(); 
-      const resObj = JSON.parse(resJson.completion); console.log({suggestionNamesval: resObj?.words});
+      const resObj = JSON.parse(resJson.completion); 
       
       if(resJson){
         setSuggestionNames(Object.values(resObj?.words));
@@ -56,7 +56,7 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
     
     fetchUserSuggestions(profileMemoized);
 
-  }, [profileMemoized]); console.log({suggestionNames});
+  }, [profileMemoized]); 
   
   
   useEffect(() => { 

@@ -16,7 +16,7 @@ export const SearchResults = () => {
   const searchType = searchParams.get("searchType");
   const searchValue = searchParams.get("searchValue"); 
   
-  useEffect(() => { console.log({searchType, searchValue});
+  useEffect(() => { 
   
     if(searchType && searchValue){
       dispatch({type: ActionType.FETCH_INIT})

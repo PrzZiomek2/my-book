@@ -18,7 +18,7 @@ export const Accordion = ({ title, children, id, expanded, defaultExpanded }: Ac
   return (
     <AccordionMUI 
       expanded={expanded}
-      defaultExpanded
+      defaultExpanded={defaultExpanded}
       sx={{
          background: "aqua"
       }}
