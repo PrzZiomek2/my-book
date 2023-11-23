@@ -4,10 +4,9 @@ import Box from '@mui/material/Box';
 import ButtonLink from '@/components/ui/ButtonLink';
 
 interface MainMenuListProps{
-  handleCloseNavMenu: () => void;
 }
 
-export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
+export const MainMenuList = () => {
   return (
     <Box sx={{ 
       flexGrow: 1, 
@@ -17,7 +16,6 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
       <ButtonLink 
          linkHref="/" 
          className='mainMenu'
-         handleClick={() => handleCloseNavMenu()}
       >
         GŁÓWNA
       </ButtonLink>
@@ -25,7 +23,6 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
       <ButtonLink 
          linkHref="/ranking" 
          className='mainMenu'
-         handleClick={() => handleCloseNavMenu()}
       >
         RANKING
       </ButtonLink>
@@ -33,7 +30,6 @@ export const MainMenuList = ({handleCloseNavMenu}: MainMenuListProps) => {
       <ButtonLink 
          linkHref="/about" 
          className='mainMenu'
-         handleClick={() => handleCloseNavMenu()}
       >
         O NAS
       </ButtonLink>
