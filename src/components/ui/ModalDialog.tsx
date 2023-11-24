@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -9,14 +8,6 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));  
 
 interface ModalDialogProps{
    open: boolean;
@@ -26,7 +17,13 @@ interface ModalDialogProps{
    children: React.ReactNode;
 }
 
-export const ModalDialog: React.FC<ModalDialogProps> = ({open, setOpen, handleConfirm, title, children}) => {
+export const ModalDialog: React.FC<ModalDialogProps> = ({
+  open, 
+  setOpen, 
+  handleConfirm, 
+  title, 
+  children
+}) => {
 
   const handleClose = () => {
     handleConfirm()
@@ -35,12 +32,19 @@ export const ModalDialog: React.FC<ModalDialogProps> = ({open, setOpen, handleCo
 
   return (
     <div>
-      <BootstrapDialog
+      <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle 
+          sx={{ 
+            m: 0, 
+            p: 2,
+            textAlign: "center"
+          }} 
+          id="customized-dialog-title"
+        >
           {title}
         </DialogTitle>
         <IconButton
@@ -55,7 +59,10 @@ export const ModalDialog: React.FC<ModalDialogProps> = ({open, setOpen, handleCo
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
+        <DialogContent 
+          dividers
+          sx={{ padding: "20px 30px" }}
+        >
           {children}
         </DialogContent>
         <DialogActions>
@@ -63,7 +70,7 @@ export const ModalDialog: React.FC<ModalDialogProps> = ({open, setOpen, handleCo
             Zapisz
           </Button>
         </DialogActions>
-      </BootstrapDialog>
+      </Dialog>
     </div>
   );
 }

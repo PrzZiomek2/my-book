@@ -27,7 +27,7 @@ export const ResultsList: React.FC<ResultsListProps> = ({results, resLoading, no
 
    return (
          <ItemsList>
-            <Loader isLoading={resLoading}>
+            <Loader isLoading={resLoading!!}>
                {results?.length > 0 && results?.map(({id, volumeInfo, ...restInfo}) => { 
                      if(!id) return null;
                      const coverImage = volumeInfo.imageLinks?.thumbnail;

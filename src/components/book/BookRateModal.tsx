@@ -7,6 +7,7 @@ import { ModalDialog } from '@/components/ui/ModalDialog';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 import { BookDefault, Opinion, OpinionRes } from '@/types/interfaces';
 import { urls } from '@/utils/urls';
@@ -69,6 +70,12 @@ export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, o
       setOpenRateModal(false);
    };
 
+   const iconStyles = {
+      color: '#6169e1',
+      width: "35px",
+      height: "35px" 
+   }
+
    return(
       <ModalDialog 
          title='Oceń pozycję'
@@ -76,22 +83,36 @@ export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, o
          setOpen={setOpenRateModal}
          handleConfirm={saveRate}
       >
-         <span>Oceń w skali od 1 do 5 klikając na gwiazdkę</span>
-         <div>
+         <Typography>Oceń w skali od 1 do 5 klikając na gwiazdkę</Typography>
+         <Box 
+            sx={{ 
+               margin: "10px auto",
+               width: "175px"
+            }}
+         >
             {new Array(5).fill("x").map((_, i) => {
                const isMarked = i < opinion.rate;
 
                return (
                   <span key={i}>
                      { isMarked ? 
-                     <StarIcon sx={{cursor: "pointer"}} onClick={() => setOpinion(prev => ({...prev, rate: i + 1}))} style={{ color: '#6169e1' }} /> 
+                     <StarIcon  className='icccccon'
+                        sx={{cursor: "pointer"}} 
+                        onClick={() => setOpinion(prev => ({...prev, rate: i + 1}))} 
+                        style={iconStyles} 
+                        
+                     /> 
                      : 
-                     <StarBorderOutlinedIcon sx={{cursor: "pointer"}} onClick={() => setOpinion(prev => ({...prev, rate: i + 1}))} style={{ color: '#6169e1' }}/>
+                     <StarBorderOutlinedIcon 
+                        sx={{cursor: "pointer"}} 
+                        onClick={() => setOpinion(prev => ({...prev, rate: i + 1}))} 
+                        style={iconStyles}
+                     />
                      }
                   </span>
                  )
             })}
-         </div>
+         </Box>
          {validateMsg  && 
             <Box 
                component="span"
@@ -103,16 +124,20 @@ export const BookRateModal: React.FC<BookRateModalProps> = ({setOpenRateModal, o
                Żeby ocena była zapisana należy dać ocenę
             </Box>
          }
-         <div>
-            <span>Dodaj opinię, będzie ona widoczna pod daną pozycją w sekcji Opinie, inni użytkownicy będą mieć możliwość jej skomentowania</span>
+         <Box>
+            <Typography>Dodaj opinię, będzie ona widoczna pod daną pozycją w sekcji Opinie, inni użytkownicy będą mieć możliwość jej skomentowania</Typography>
             <TextField 
                 multiline 
                 minRows={3} 
                 variant="outlined" 
                 value={opinion?.content}
                 onChange={(e) => setOpinion(prev => ({...prev, content: e.target.value}))}
+                sx={{ 
+                  marginTop: "20px",
+                  width: "100%" 
+               }}
             />
-         </div>
+         </Box>
       </ModalDialog>
    )
 }
