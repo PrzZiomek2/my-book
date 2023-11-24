@@ -46,7 +46,8 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
         })
       });
     
-      const resJson = await res?.json(); 
+      const resJson = await res?.json(); console.log({resJson});
+      
       const resObj = JSON.parse(resJson.completion); 
       
       if(resJson){
@@ -91,7 +92,6 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
 
       getBooks();
   }, [suggestionNames]);  
-  
   
   return (
     <ResultsList results={booksState.results} resLoading={booksState.loading}/>

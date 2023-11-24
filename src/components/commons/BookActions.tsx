@@ -9,6 +9,7 @@ import { BookDefault, BookType, CustomBook } from '@/types/interfaces';
 import { Loader } from '@/utils/loader';  
 import useSWR from 'swr';
 import { urls } from '@/utils/urls';
+import { CircularProgress } from '@mui/material';
 
 const {rootPath} = urls();
 
@@ -75,21 +76,23 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
    };
 
    return(
-      <div className={className}>
-         <Button onClick={() => handleAddBook(BookType.READ)} size="small">
-            <Loader isLoading={isLoading.read!}> 
-               <span>{isRead ? "Przeczytane" : "Do przeczytanych"}</span>
-            </Loader>
-         </Button>
-         <IconButton 
-            className='favourite_button'
-            onClick={() => handleAddBook(BookType.FAVOURITE)} 
-            aria-label="add to favorites"
-         >
-            <Loader isLoading={isLoading.favourite!}>
-               <span>{isfavourite ? <FavoriteIcon/> : <FavoriteBorderIcon/>}</span>
-            </Loader>
-         </IconButton>
-      </div>
+      <Suspense fallback={<CircularProgress />}>
+         <div className={className}>
+            <Button onClick={() => handleAddBook(BookType.READ)} size="small">
+               <Loader isLoading={isLoading.read!}> 
+                  <span>{isRead ? "Przeczytane" : "Do przeczytanych"}</span>
+               </Loader>
+            </Button>
+            <IconButton 
+               className='favourite_button'
+               onClick={() => handleAddBook(BookType.FAVOURITE)} 
+               aria-label="add to favorites"
+            >
+               <Loader isLoading={isLoading.favourite!}>
+                  <span>{isfavourite ? <FavoriteIcon/> : <FavoriteBorderIcon/>}</span>
+               </Loader>
+            </IconButton>
+         </div>
+      </Suspense>
    )
 }

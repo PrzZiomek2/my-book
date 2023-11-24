@@ -17,7 +17,7 @@ const {rootPath} = urls();
 export const CriteriaForm = () => {
   const {data: session} = useSession();
   const userId = session?.user.user._id;
-  const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
+ // const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
 
   const [formData, setFormData] = useState<CriteriaFormData>({
     readBooks: [],
@@ -25,12 +25,12 @@ export const CriteriaForm = () => {
     isCreative: false,
     tags: []   
  }); 
- 
+ /*
   useEffect(() =>{ 
       if(!data?.data) return;
       setFormData(data?.data)
   }, [data?.data])
-
+*/
  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
@@ -59,7 +59,6 @@ export const CriteriaForm = () => {
           margin: '20px 0',
         }}
       >
-        <Suspense fallback={<CircularProgress />}>
           <Box sx={{ marginBottom: "25px" }}>
             <label htmlFor='tags'>Tagi</label>
             <InputTags 
@@ -93,7 +92,6 @@ export const CriteriaForm = () => {
               onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
             />
           </Box>
-        </Suspense>
         <ButtonLink
           type="submit" 
           variant="contained" 

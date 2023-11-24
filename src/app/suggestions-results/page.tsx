@@ -50,12 +50,12 @@ export default async function Suggestions({searchParams}: { searchParams: { from
          justifyContent: "center",
          marginTop: "40px"
       }}> 
-        {false && <SuggestionsResults 
+        <SuggestionsResults 
             tags={tags}
             read={readBooks}
             favourite={favouriteBooks}
             temperature={temperature}
-         />}
+         />
       </Box>
     )
 }

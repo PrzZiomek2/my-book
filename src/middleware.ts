@@ -1,4 +1,7 @@
-import { withAuth } from "next-auth/middleware"
+import { withAuth } from "next-auth/middleware";
+import { urls } from "./utils/urls";
+
+const allowedOrigins = process.env.NODE_ENV === 'production' ? [] : [urls().rootPath];
 
 export default withAuth(
   function middleware (req) {},
