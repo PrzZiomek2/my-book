@@ -5,11 +5,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { BookDefault, BookType, CustomBook } from '@/types/interfaces';
+import { BookDefault, CustomBook } from '@/types/interfaces';
 import { Loader } from '@/utils/loader';  
 import useSWR from 'swr';
 import { urls } from '@/utils/urls';
 import { CircularProgress } from '@mui/material';
+import { BookType } from '@/types/enums';
 
 const {rootPath} = urls();
 

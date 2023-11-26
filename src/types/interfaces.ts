@@ -55,12 +55,6 @@ export interface BookDetailed {
    selfLink: string;
  }
 
-export enum BookType {
-  FAVOURITE = "favourite",
-  ON_SHELF = "onShelf",
-  READ = "read"
-}
-
 export interface Comment {
    id: string;
    author: { name: string; id: string; }
