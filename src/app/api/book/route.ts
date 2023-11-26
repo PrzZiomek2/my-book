@@ -1,6 +1,6 @@
 import clientPromise from '@/mongoDB/utils/mongoClient';
 import { NextResponse } from 'next/server';
-import { BookDefault, CustomBook, UserBooks, BookType } from '@/types/interfaces';
+import { CustomBook, UserBooks } from '@/types/interfaces';
 
 export async function POST(req: Request) {
    const book: CustomBook = await req.json(); 

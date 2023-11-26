@@ -58,6 +58,7 @@ export const SearchBook = () => {
             width: '100%',
             flexDirection: 'row',
             margin: '20px 0',
+            paddingLeft: "10px"
           }}
         >
           <Controller
