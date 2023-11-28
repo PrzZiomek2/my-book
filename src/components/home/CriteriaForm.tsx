@@ -19,7 +19,6 @@ export const CriteriaForm = () => {
   const {data: session} = useSession();
   const userId = session?.user.user._id;
   const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
-console.log("sess", session);
 
   const [formData, setFormData] = useState<CriteriaFormData>({
     readBooks: [],
