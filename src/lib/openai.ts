@@ -23,6 +23,7 @@ export const getOpenaiCompletion = async ({
      model,
      temperature,
      response_format: { type: "json_object" },
+     max_tokens: 2000,
      messages: [{
         role: "user",
         content

@@ -185,7 +185,7 @@ export const ProfileSection: React.FC = () => {
         </section> 
         
         <section className={styles.books}>
-          <h4>Moje książki</h4>
+          <h3>Moje książki</h3>
           <MyBooks />
         </section>
       </div>

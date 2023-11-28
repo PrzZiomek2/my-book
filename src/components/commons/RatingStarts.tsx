@@ -23,7 +23,7 @@ const RatingStars: FC<RatingStarsProps> = ({score, size = "big"}) => {
       )}); 
  
     const gradientStar = () => (
-        <svg xmlns="http://www.w3.org/2000/svg" width={size === "small" ? "16" : "22.281"} height={size === "small" ? "16" : "20.707"} viewBox="0 0 22.281 20.707">
+        <svg xmlns="http://www.w3.org/2000/svg" width={size === "small" ? "16" : "24"} height={size === "small" ? "16" : "24"} viewBox="0 0 24 24">
             <g id="Warstwa_2" transform="translate(-5.842 -5.661)">
                 <defs>
                     <linearGradient id="grad1">
@@ -57,7 +57,10 @@ const RatingStars: FC<RatingStarsProps> = ({score, size = "big"}) => {
     }, [score]);
  
     return(
-        <Box sx={{display: "flex"}}>
+        <Box sx={{
+            display: "flex",
+            alignItems: "center"
+        }}>
             {renderStars}
         </Box>
     )

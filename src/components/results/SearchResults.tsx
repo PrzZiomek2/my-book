@@ -54,12 +54,12 @@ export const SearchResults = () => {
   }, [searchType, searchValue])
 
   return (
-    <div> 
+    <> 
         <ResultsList results={state.results?.items} resLoading={state.loading}/>
         {state.error && (
           <p>Nie znaleziono żadnych wyników. Sprawdź poprawność zapytania.</p>
         )}
-    </div>
+    </>
   )
 }
 

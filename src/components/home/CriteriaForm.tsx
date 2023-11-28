@@ -9,6 +9,7 @@ import { urls } from '@/utils/urls';
 import { useSession } from 'next-auth/react';
 import { CriteriaFormData } from '@/types/interfaces';
 import ButtonLink from '../ui/ButtonLink';
+import Tooltip from '@mui/material/Tooltip';
 import useSWR from 'swr';
 import { CircularProgress } from '@mui/material';
 
@@ -17,7 +18,8 @@ const {rootPath} = urls();
 export const CriteriaForm = () => {
   const {data: session} = useSession();
   const userId = session?.user.user._id;
- // const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
+  const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
+console.log("sess", session);
 
   const [formData, setFormData] = useState<CriteriaFormData>({
     readBooks: [],
@@ -25,12 +27,12 @@ export const CriteriaForm = () => {
     isCreative: false,
     tags: []   
  }); 
- /*
+ 
   useEffect(() =>{ 
       if(!data?.data) return;
       setFormData(data?.data)
   }, [data?.data])
-*/
+
  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
@@ -92,14 +94,17 @@ export const CriteriaForm = () => {
               onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
             />
           </Box>
-        <ButtonLink
-          type="submit" 
-          variant="contained" 
-          sx={{ marginTop: '20px' }}
-          linkHref={'/suggestions-results'}
-        >
-          SPRAWDŹ
-        </ButtonLink>
+          <Tooltip title={!userId ? "zaloguj się w celu koprzystania z sugestii" : ""}>
+            <ButtonLink
+              type="submit" 
+              variant="contained" 
+              sx={{ marginTop: '20px' }}
+              linkHref={'/suggestions-results'}
+              disabled={!userId}
+            >
+              SPRAWDŹ
+            </ButtonLink>
+        </Tooltip>
       </Box>
     </form>
   );
