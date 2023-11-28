@@ -19,7 +19,6 @@ export const SuggestionsCriteria = () => {
       <Accordion 
           title="Propozycje na podstawie kryteriów podanych poniżej. Aby wyszukać naciśnij Gotowe"
           id='suggestions2'
-         // defaultExpanded={false}
          >
          <CriteriaForm />
       </Accordion>

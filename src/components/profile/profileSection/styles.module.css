@@ -33,7 +33,6 @@
  .info_top {
    display: flex;
    justify-content: space-between;
-   padding-top: 20px;
  }
  
  .edit_button {
@@ -41,7 +40,6 @@
  }
  
  .info_bottom {
-   max-width: 500px;
    margin: 50px 0;
  }
  

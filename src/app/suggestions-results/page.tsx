@@ -33,7 +33,7 @@ export default async function Suggestions({searchParams}: { searchParams: { from
       favouriteBooks = data?.favouriteBooks.join(",");  
       tags = data?.tags?.join(",");
       if(data.isCreative){
-         temperature = 0.8
+         temperature = 1
       }
    };
    
