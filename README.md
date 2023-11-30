@@ -1,7 +1,7 @@
-A web application for book lovers, to browse, rate, comment and discuss literary items. The app consists of book search, a book rating system, a user account with a list of favourites and rated ones. Subsequently, other functionalities, like reading suggestions and book ranking will be added. 
+A web application for book lovers. The app uses an OpenAI model to provide reading suggestions based on the user profile, preferences, and reading history. Additionally, the app includes book search, a book rating system, and a user account that allows users to create lists of favourites and reads. Furthermore, a user can rate books and add opinions. Subsequently, other functionalities, like book ranking, will be added.
 
-Project in its early phase.
+Project in progresss.
 
 Project technology stack:
 
-TypeScript, Next.js, React.js, Material UI, MongoDB, React Hook Form
+TypeScript, Next.js, React.js, Material UI, MongoDB, React Hook Form, OpenAI API, Google Books API
