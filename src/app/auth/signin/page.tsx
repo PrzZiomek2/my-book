@@ -5,7 +5,6 @@ import { signIn } from 'next-auth/react';
 import Container from '@mui/material/Container';
 
 import {LoginForm} from '@/components/auth/signIn/LoginForm';
-import { SubmitHandler } from 'react-hook-form';
 import { AlertInfo } from '@/components/ui/AlertInfo';
 import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
 
@@ -18,7 +17,7 @@ export default function SignIn() {
 
   const [state, dispatch] = useFetchReducer();
 
-  const onSubmit = async (data: SubmitHandler<FormValues>) => {
+  const onSubmit = async (data: FormValues) => {
     try {
       dispatch({type: ActionType.FETCH_INIT})  
 

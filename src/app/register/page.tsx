@@ -22,7 +22,7 @@ export default function Register() {
    const router = useRouter();
    const [state, dispatch] = useFetchReducer();
 
-   const createAccount = async (data: SubmitHandler<FormValues>) => { 
+   const createAccount = async (data: FormValues) => { 
       dispatch({type: ActionType.FETCH_INIT});
 
       const res = await fetch(`${rootPath}/api/user`, {

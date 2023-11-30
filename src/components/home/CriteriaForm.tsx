@@ -11,7 +11,8 @@ import { CriteriaFormData } from '@/types/interfaces';
 import ButtonLink from '../ui/ButtonLink';
 import Tooltip from '@mui/material/Tooltip';
 import useSWR from 'swr';
-import { CircularProgress } from '@mui/material';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 const {rootPath} = urls();
 
@@ -19,6 +20,7 @@ export const CriteriaForm = () => {
   const {data: session} = useSession();
   const userId = session?.user.user._id;
   const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
+  const router = useRouter();
 
   const [formData, setFormData] = useState<CriteriaFormData>({
     readBooks: [],
@@ -30,17 +32,25 @@ export const CriteriaForm = () => {
   useEffect(() =>{ 
       if(!data?.data) return;
       setFormData(data?.data)
-  }, [data?.data])
-
- const handleFormSubmit = (e: React.FormEvent) => {
+  }, [data?.data]); 
+  
+ const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
 
-    fetch(`${rootPath}/api/user/${userId}/criteria-form`, {
+  const res = await fetch(`${rootPath}/api/user/${userId}/criteria-form`, {
       method: "POST",
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData), 
+      cache: "no-cache"
     })
     .catch(err => console.log("err when adding opinion", err));
+
+    const resJson = await res?.json();
+
+    if(resJson){
+      router.replace("/suggestions-results");
+    }
+
   };
 
 
@@ -94,15 +104,16 @@ export const CriteriaForm = () => {
             />
           </Box>
           <Tooltip title={!userId ? "zaloguj się w celu koprzystania z sugestii" : ""}>
-            <ButtonLink
-              type="submit" 
-              variant="contained" 
-              sx={{ marginTop: '20px' }}
-              linkHref={'/suggestions-results'}
-              disabled={!userId}
-            >
-              SPRAWDŹ
-            </ButtonLink>
+            <div>       
+              <Button
+                type="submit" 
+                variant="contained" 
+                sx={{ marginTop: '20px' }}
+                disabled={!userId}
+              >
+                SPRAWDŹ
+              </Button>
+            </div>
         </Tooltip>
       </Box>
     </form>
