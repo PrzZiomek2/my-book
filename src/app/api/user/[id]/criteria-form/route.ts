@@ -28,7 +28,8 @@ export async function POST(req: Request, {params}:{params: {id: string}}) {
       {userId}, 
       {userId, data: body},
       {upsert: true}
-      ); 
+      ); console.log({body, newForm});
+      
 
    return NextResponse.json({ ok: newForm.acknowledged })  ;
 }

@@ -10,22 +10,32 @@ import Box from '@mui/material/Box';
 
 export const RegisterForm = ({ createAccount }) => {
   const schema = yup.object().shape({
-    name: yup.string().required('Imię jest wymagane'),
-    email: yup.string().email('Nieprawidłowy email').required('Email jest wymagany'),
-    password: yup.string().required('Hasło jest wymagane'),
+    name: yup
+      .string()
+      .required('Imię jest wymagane'),
+    email: yup
+      .string()
+      .email('Nieprawidłowy email')
+      .required('Email jest wymagany'),
+    password: yup
+      .string()
+      .required('Hasło jest wymagane'),
   });
 
   const { control, handleSubmit, formState } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitHandler = (data, e) => {
-      e.preventDefault();
+  const onSubmitHandler = (data) => {
       createAccount(data);
   };
 
   return (
-   <Box sx={{maxWidth: "600px"}}>
+   <Box sx={{
+      maxWidth: "600px",
+      margin: "auto",
+      marginTop: "50px"
+    }}>
     <form onSubmit={handleSubmit(onSubmitHandler)}>
       <FormControl fullWidth margin="normal">
         <Controller
@@ -76,11 +86,17 @@ export const RegisterForm = ({ createAccount }) => {
       </FormControl>
       <Button
         type="submit"
-        variant="contained"
-        color="primary"
+        variant="outlined"
+        color="secondary"
         fullWidth
         className="login-submit--btn"
         disabled={formState.isSubmitting}
+        sx={{
+          marginTop: "30px",
+          marginBottom: "30px",
+          padding: "10px",
+          borderWidth: "2px"
+        }}
       >
         Zapisz
       </Button>

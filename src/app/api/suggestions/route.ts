@@ -16,6 +16,7 @@ export async function POST(req: Request) {
    const {tags, read, favourite, temperature} = body;
 
    const remaining = await limiter.removeTokens(1); 
+console.log({remaining});
 
    if(remaining < 0){ 
       return NextResponse.json(null, {

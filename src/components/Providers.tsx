@@ -14,7 +14,7 @@ export default function Providers({children}: ProvidersProps)  {
       <SWRConfig 
         value={{
           fetcher: (resource, init) => fetch(resource, init).then(res => res.json()),
-          suspense: true,
+         // suspense: true,
           revalidateOnFocus: false
         }}
       >
