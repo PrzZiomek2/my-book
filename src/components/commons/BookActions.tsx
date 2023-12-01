@@ -29,7 +29,7 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
    const userId = session?.user.user._id; 
    const {data: customBook, mutate} = useSWR<{book: CustomBook}>(`${rootPath}/api/book/${book.id}`);
 
-   const currentBook = customBook?.book || book; 
+   const currentBook = customBook?.book || book; console.log({currentBook});
   
    const [isLoading, setIsLoading] = useState<{read?: false, favourite?: false}>({read: false, favourite: false});
 

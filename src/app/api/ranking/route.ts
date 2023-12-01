@@ -21,10 +21,30 @@ export async function GET(request: Request) {
       })
    };
 
-   const booksWithOpinions = books.map(book => ({
-      ...book,
-      opinions: opinionsByBook[book.id]
+   console.log({opinionsByBook});
+
+   const getRateValue = (id: string) => { 
+      const opinions = opinionsByBook[id];      
+      const ratesSum = opinions?.reduce((a,b) => a + b.rate, 0);
+      const amount = opinions?.length;
+      return (ratesSum / amount).toFixed(2);
+   };
+
+   const ratedBooks = books.filter(({id}) => opinionsByBook[id]);
+
+   const rankedBooks = ratedBooks.map(({id, volumeInfo, favourite, read}) => ({
+      id,
+      title: volumeInfo.title,
+      authors: volumeInfo.authors.slice(0,3).join(","),
+      rate: getRateValue(id),
+      opinions: opinionsByBook[id]?.length,
+      subtitle: volumeInfo.subtitle,
+      infoLink: volumeInfo.infoLink,
+      categories: volumeInfo.categories,
+      imageLink: volumeInfo.imageLinks?.thumbnail,
+      favourite,
+      read
    }))
 
-   return NextResponse.json({ books: booksWithOpinions });
+   return NextResponse.json({ books: rankedBooks });
 }

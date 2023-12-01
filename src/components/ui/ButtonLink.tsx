@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps, Link as MuiLink } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 import Link, {LinkProps} from 'next/link';
 
 interface ButtonLinkProps extends ButtonProps{

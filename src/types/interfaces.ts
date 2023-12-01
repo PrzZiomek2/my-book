@@ -72,6 +72,20 @@ export interface CustomBook extends BookDefault {
    is_read: boolean;
 }
 
+export interface RankingBook{
+   id: string;
+   title: string;
+   authors: string;
+   rate: string;
+   opinions: number;
+   subtitle: string;
+   infoLink: string;
+   categories: string[];
+   imageLink: string;
+   read: string[];
+   favourite: string[]; 
+}
+
 export interface UserBooks {
    userId: string;
    books: CustomBook[];
