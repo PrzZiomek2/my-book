@@ -11,7 +11,7 @@ const {rootPath} = urls();
 
 export default async function Ranking() {
   const { books } = await getApiData<{books: RankingBook[]}>(`${rootPath}/api/ranking`); 
-  const booksSorted = books.sort((a,b) => Number(a.rate) + Number(b.rate));
+  const booksSorted = books.sort((a,b) => Number(b.rate) - Number(a.rate));
    
   return (
     <Box sx={{

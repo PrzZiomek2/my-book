@@ -11,7 +11,7 @@ import { BookRateModal } from '@/components/book/BookRateModal';
 import { BookStats } from '@/components/book/BookStats/BookStats';
 import styles from './styles.module.css'
 
-import { ExternalLink } from '@/components/ui/ExternalLink';
+import { ExternalLink } from '@/components/ui/ExternalLink/ExternalLink';
 
 interface BookDetailsProps{
    currentBook: CustomBook;

@@ -1,0 +1,44 @@
+.cover_replace {
+   background-color: rgb(243, 245, 248);
+   border: 1px solid #bdbde5;
+   border-radius: 5px;
+   width: 140px;
+   height: 200px;
+   flex-shrink: 0;
+   color: lightslategrey;
+   font-size: 0.8rem;
+   text-align: center;
+   padding-top: 75px;
+ }
+ 
+ .book_list_item {
+   padding: 0;
+   margin: 16px 0;
+ }
+ 
+ .book_list_item_img {
+   box-shadow: 
+     0 1px 2px 0 rgba(60, 64, 67, 0.3), 
+     0 1px 3px 1px rgba(60, 64, 67, 0.15);
+   border-radius: 4px;
+   flex-shrink: 0;
+ }
+ 
+ .book_title_link {
+   margin-bottom: 10px;
+ }
+ 
+ .book_title_link:hover {
+   text-decoration: underline;
+ }
+ 
+ .book_authors {
+   font-size: 1rem;
+ }
+ 
+ .search_list_actions {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   align-items: center;
+ }
