@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { BookDefault, CustomBook } from '@/types/interfaces';
 import { Loader } from '@/utils/loader';  
+import Box from '@mui/material/Box';
 import useSWR from 'swr';
 import { urls } from '@/utils/urls';
 import { CircularProgress } from '@mui/material';
@@ -78,10 +79,21 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
 
    return(
       <Suspense fallback={<CircularProgress />}>
-         <div className={className}>
-            <Button onClick={() => handleAddBook(BookType.READ)} size="small">
+         <Box 
+            className={className}
+            sx={{
+               display: "flex",
+               flexDirection: "column"
+            }}
+         >
+            <Button 
+               onClick={() => handleAddBook(BookType.READ)} 
+               size="medium"
+               variant="outlined"
+                color="secondary"
+            >
                <Loader isLoading={isLoading.read!}> 
-                  <span>{isRead ? "Przeczytane" : "Do przeczytanych"}</span>
+                  <span>Przeczytane</span>
                </Loader>
             </Button>
             <IconButton 
@@ -93,7 +105,7 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
                   <span>{isfavourite ? <FavoriteIcon/> : <FavoriteBorderIcon/>}</span>
                </Loader>
             </IconButton>
-         </div>
+         </Box>
       </Suspense>
    )
 }

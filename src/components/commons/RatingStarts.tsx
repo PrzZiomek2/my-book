@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 interface RatingStarsProps {
     score: number;
     size?: "small" | "big"
-};
+}; 
  
 const RatingStars: FC<RatingStarsProps> = ({score, size = "big"}) => {
     const [renderStars, setRenderStars] = useState<JSX.Element[]>([]);
@@ -40,15 +40,15 @@ const RatingStars: FC<RatingStarsProps> = ({score, size = "big"}) => {
  
         if(i === Number(scoreRounded) && Number(ratingPointValue)){
             return(
-                <div key={i}>
+                <Box sx={{marginTop: "3px"}} key={i}>
                     {gradientStar()}
-                </div>
+                </Box>
             )
         }
  
         return(
             <div key={i}>
-                 {isStarMarked ? <StarIcon style={{ color: '#6169e1' }} /> : <StarBorderOutlinedIcon style={{ color: '#6169e1' }}/>} 
+                 {isStarMarked ? <StarIcon width={size === "small" ? "16" : "24"} height={size === "small" ? "16" : "24"} style={{ color: '#6169e1' }} /> : <StarBorderOutlinedIcon style={{ color: '#6169e1' }}/>} 
             </div>
     )});
  

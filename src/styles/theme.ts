@@ -36,6 +36,13 @@ const theme = createTheme({
             }
          }
       },
+      MuiSvgIcon: {
+         styleOverrides:{
+            fontSizeSmall: {
+               fontSize: "0.8rem"
+            }
+         }
+      },
       MuiAccordionDetails: {
          styleOverrides: {
             root: {
