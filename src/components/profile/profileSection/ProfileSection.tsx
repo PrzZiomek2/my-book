@@ -8,14 +8,14 @@ import Button from '@mui/material/Button';
 import { ImageUpload } from '../../ui/ImageUpload';
 import Image from 'next/image';
 import defaultImg from '../../../../public/profile.jpg';
-import { InputTags, TagCustom } from '../../commons/inputTags/InputTags';
 import CircularProgress from '@mui/material/CircularProgress';
-import { MyBooks } from '../myBooks/MyBooks';
+import { MyBooks } from '@/components/profile/myBooks/MyBooks';
 import { AlertInfo } from '@/components/ui/AlertInfo';
 import styles from './styles.module.css';
 import { urls } from '@/utils/urls';
 import { ProfileTags } from './parts/ProfileTags';
 import { ProfileFormData } from '@/types/interfaces';
+import { Tag } from '@/components/ui/Tag';
 
 const {rootPath} = urls();
 
@@ -160,7 +160,7 @@ export const ProfileSection: React.FC = () => {
                            <div className={styles.tags_list}>
                               {formData.tags.map((data, index) => {
                                  return (
-                                    <TagCustom 
+                                    <Tag
                                        data={data} 
                                        key={index} 
                                     />

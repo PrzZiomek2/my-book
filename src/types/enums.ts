@@ -7,3 +7,10 @@ export enum BookType {
  export enum Name{
    APP = "MyBooks"
  }
+
+ export enum Breakpoint{
+  WIDESCREEN = 1590,
+  DESKTOP = 1200,
+  TABLET = 900,
+  MOBILE = 545
+}

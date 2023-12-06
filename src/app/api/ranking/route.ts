@@ -21,8 +21,6 @@ export async function GET(request: Request) {
       })
    };
 
-   console.log({opinionsByBook});
-
    const getRateValue = (id: string) => { 
       const opinions = opinionsByBook[id];      
       const ratesSum = opinions?.reduce((a,b) => a + b.rate, 0);

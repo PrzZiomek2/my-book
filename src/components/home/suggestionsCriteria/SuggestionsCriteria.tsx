@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { CriteriaForm } from '../CriteriaForm';
 import styles from './styles.module.css';
 
 import Accordion from '@/components/ui/Accordion';
 import { DefaultCriteria } from '../DefaultCriteria';
+
+const CriteriaForm = React.lazy(() => import('../CriteriaForm'));
 
 export const SuggestionsCriteria = () => {
   return (
