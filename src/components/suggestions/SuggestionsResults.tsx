@@ -46,7 +46,7 @@ export const SuggestionsResults: FC<SuggestionsResultsProps> = ({
         })
       });
     
-      const resJson = await res?.json(); console.log({resJson});
+      const resJson = await res?.json();
       
       const resObj = JSON.parse(resJson.completion); 
       

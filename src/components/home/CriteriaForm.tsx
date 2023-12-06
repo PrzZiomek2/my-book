@@ -16,7 +16,7 @@ import { useRouter } from 'next/navigation';
 
 const {rootPath} = urls();
 
-export const CriteriaForm = () => {
+const CriteriaForm = () => {
   const {data: session} = useSession();
   const userId = session?.user.user._id;
   const { data } = useSWR<{data: CriteriaFormData}>(`${rootPath}/api/user/${userId}/criteria-form`);
@@ -36,7 +36,6 @@ export const CriteriaForm = () => {
   
  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
 
   const res = await fetch(`${rootPath}/api/user/${userId}/criteria-form`, {
       method: "POST",
@@ -120,4 +119,4 @@ export const CriteriaForm = () => {
   );
 };
 
-
+export default CriteriaForm;

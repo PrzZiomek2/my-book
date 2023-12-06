@@ -6,8 +6,7 @@ import ButtonLink from '@/components/ui/ButtonLink';
 interface MainMenuListProps{
 }
 
-export const MainMenuList = () => {
-  return (
+export const MainMenuList = () => (
     <Box sx={{ 
       flexGrow: 1, 
       display: { xs: 'none', md: 'flex' },
@@ -35,4 +34,4 @@ export const MainMenuList = () => {
       </ButtonLink>
    </Box>
   )
-}
+

@@ -1,7 +1,7 @@
 "use client";
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import Button from '@mui/material/Button';
 import TextField  from '@mui/material/TextField';
@@ -12,8 +12,10 @@ import Box from '@mui/material/Box';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { MediaViewportContext } from '@/context/MediaViewportProvider';
 import { setUrlParams } from '@/utils/handlers';
-import styles from './styles.module.css';
+import styles from './styles.module.css'
 
 type FormValues = {
   searchValue: string;
@@ -22,9 +24,9 @@ type FormValues = {
 
 export const SearchBook = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const {isWidescreenMax, isMobileMax} = useContext(MediaViewportContext); console.log(isWidescreenMax);
   const searchParams = useSearchParams(); 
-
+  
   const schema = yup.object().shape({
     searchValue: yup.string().required('Pole wyszukiwarki nie może byc puste'),
     searchType: yup.string()
@@ -57,8 +59,9 @@ export const SearchBook = () => {
             display: "flex",
             width: '100%',
             flexDirection: 'row',
-            margin: '20px 0',
-            paddingLeft: "10px"
+            margin: isWidescreenMax ? '20px auto' : '20px 0',
+            paddingLeft: isWidescreenMax ? 0 : "10px",
+            justifyContent: isWidescreenMax ? "center" : "flex-start"
           }}
         >
           <Controller
@@ -69,7 +72,7 @@ export const SearchBook = () => {
               <Select
                 {...field}
                 sx={{ 
-                  width: '150px',
+                  width: '120px',
                   background: "aliceblue",
                   height: "50px"
                 }}
@@ -87,7 +90,8 @@ export const SearchBook = () => {
                 sx={{ 
                   flexGrow: 1, 
                   background: "aliceblue",
-                  width: "500px",
+                  width: isMobileMax ? "400px" : "500px",
+                  maxWidth: "700px"
                 }} 
                 InputProps={{ 
                   sx: {
