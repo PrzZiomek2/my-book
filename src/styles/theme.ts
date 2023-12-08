@@ -1,6 +1,16 @@
+import { Breakpoint } from '@/types/enums';
 import createTheme from '@mui/material/styles/createTheme';
 
 const theme = createTheme({
+   breakpoints: {
+      values: {
+        xs: 0,
+        sm: Breakpoint.MOBILE,
+        md: Breakpoint.TABLET,
+        lg: Breakpoint.DESKTOP,
+        xl: Breakpoint.WIDESCREEN,
+      },
+    },
    components: {
       MuiCssBaseline: {
          styleOverrides: {
@@ -76,7 +86,10 @@ const theme = createTheme({
                },
                "&.mainMenu:hover": {
                  backgroundColor: "#4949ca"
-               }
+               },
+               [`@media (max-width: ${Breakpoint.MOBILE}px)`]: {
+                  borderRadius: "8px"
+                },
             },
             
          }
@@ -89,7 +102,25 @@ const theme = createTheme({
                 },
             }
          }
-      }
+      },
+      MuiInputBase: {
+         styleOverrides: {
+            root: {
+               [`@media (max-width: ${Breakpoint.MOBILE}px)`]: {
+                  borderRadius: "8px"
+                },
+            },
+         }
+      },
+      MuiTextField: {
+         styleOverrides: {
+            root: {
+               [`@media (max-width: ${Breakpoint.MOBILE}px)`]: {
+                  borderRadius: "8px"
+                },
+            },
+         }
+      },
    }
 });
 
