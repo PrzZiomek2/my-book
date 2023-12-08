@@ -7,6 +7,8 @@ export const Card = ({children, ...props}: CardProps) => (
          {...props}
          sx={{ 
             display: "flex",
+            flexDirection: {xs: "column", md: "row"},
+            alignItems: {xs: "center", md: "flex-start"},
             padding: "20px",
             border: "1px solid blueviolet",
             gap: "20px",

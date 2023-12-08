@@ -24,7 +24,7 @@ type FormValues = {
 
 export const SearchBook = () => {
   const router = useRouter();
-  const {isWidescreenMax, isMobileMax} = useContext(MediaViewportContext); console.log(isWidescreenMax);
+  const {isWidescreenMax, isMobileMax} = useContext(MediaViewportContext); 
   const searchParams = useSearchParams(); 
   
   const schema = yup.object().shape({
@@ -58,10 +58,12 @@ export const SearchBook = () => {
           sx={{
             display: "flex",
             width: '100%',
-            flexDirection: 'row',
+            gap: isMobileMax ? "16px" : 0,
+            flexDirection: isMobileMax ? "column" : 'row',
             margin: isWidescreenMax ? '20px auto' : '20px 0',
             paddingLeft: isWidescreenMax ? 0 : "10px",
-            justifyContent: isWidescreenMax ? "center" : "flex-start"
+            justifyContent: isWidescreenMax ? "center" : "flex-start",
+            maxWidth: isMobileMax ? "600px" : "none"
           }}
         >
           <Controller
@@ -72,7 +74,7 @@ export const SearchBook = () => {
               <Select
                 {...field}
                 sx={{ 
-                  width: '120px',
+                  width: isMobileMax ? "100%" : '120px',
                   background: "aliceblue",
                   height: "50px"
                 }}
@@ -90,8 +92,7 @@ export const SearchBook = () => {
                 sx={{ 
                   flexGrow: 1, 
                   background: "aliceblue",
-                  width: isMobileMax ? "400px" : "500px",
-                  maxWidth: "700px"
+                  maxWidth: isMobileMax ? "600px" : "700px"
                 }} 
                 InputProps={{ 
                   sx: {
@@ -109,7 +110,8 @@ export const SearchBook = () => {
             sx={{
               height: '50px',
               padding: '5px 30px',
-              background: "aliceblue"
+              background: "aliceblue",
+              marginTop: isMobileMax ? "16px" : 0
             }}
           >
             Szukaj

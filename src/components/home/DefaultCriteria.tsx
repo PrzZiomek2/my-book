@@ -14,20 +14,28 @@ export const DefaultCriteria = async () => {
   const userId = session?.user.user._id; 
 
   return (
-    <Box>
+    <Box 
+      sx={{
+        display: "flex",
+        flexDirection: "column"
+      }}
+    >
       <Typography>
          Domyślnie pokazujemy sugestie na podstawie informacji jakie podałeś w profilu, czyli opis, tagi oraz lista ulubionych i
          przeczytanych książek. Kliknij Wyniki aby zobaczyć propozycje.
       </Typography>
       <Tooltip title={!userId ? "zaloguj się w celu koprzystania z sugestii" : ""}>
-        <span>
+        <span style={{textAlign: "center"}}>
           <ButtonLink
             linkHref={{
               pathname: '/suggestions-results',
               query: { fromProfile: true },
             }}
             variant="contained"
-            sx={{marginTop: "20px"}}
+            sx={{
+              marginTop: "30px",
+              width: { xs: "80%", md: "auto" }
+            }}
             disabled={!userId}
           >
             Wyniki

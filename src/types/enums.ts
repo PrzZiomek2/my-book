@@ -12,5 +12,5 @@ export enum BookType {
   WIDESCREEN = 1590,
   DESKTOP = 1200,
   TABLET = 900,
-  MOBILE = 545
+  MOBILE = 768
 }
