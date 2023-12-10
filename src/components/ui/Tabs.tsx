@@ -1,11 +1,12 @@
 "use client";
-import * as React from 'react';
+import React, {ReactNode, useState, useEffect, FC, SyntheticEvent, useContext} from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { MediaViewportContext } from '@/context/MediaViewportProvider';
 
 interface TabPanelProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   index: number;
   value: number;
 }
@@ -38,23 +39,37 @@ function a11yProps(index: number) {
 }
 
 interface CustomTabsProps {
-   items: {
-      panel: React.ReactNode;
-      tab: { label: string }
-   }[];
-   ariaLabel: string;
-   orientation?:  "vertical" | "horizontal"
+  className?: string;
+  items: {
+    panel: ReactNode;
+    tab: { label: string }
+  }[];
+  ariaLabel: string;
+  orientation?:  "vertical" | "horizontal"
  }
 
-const CustomTabs: React.FC<CustomTabsProps> = ({items, ariaLabel, className, orientation = "vertical"}) => {
-  const [value, setValue] = React.useState(0);
+const CustomTabs: FC<CustomTabsProps> = ({items, ariaLabel, className, orientation = "vertical"}) => {
+  const [value, setValue] = useState(0);
+  const [newOrientation, setNewOrientation] = useState(orientation);
+  const {isTabletMax} = useContext(MediaViewportContext); 
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  useEffect(() => {
+    if(isTabletMax){
+      setNewOrientation("horizontal")
+    }
+  }, [isTabletMax])
+
+  const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: orientation === "horizontal" ? "column" : "row" }}>
+    <Box 
+      sx={{ 
+        display: "flex", 
+        flexDirection: newOrientation === "horizontal" ? "column" : "row" 
+       }}
+    >
       <Box 
         sx={{ 
           borderBottom: 1, 
@@ -67,7 +82,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({items, ariaLabel, className, ori
          value={value} 
          onChange={handleChange} 
          aria-label={ariaLabel}
-         orientation={orientation}
+         orientation={newOrientation}
          className={className}
         >
          {items.map(({tab}, i) => (
