@@ -7,6 +7,7 @@ import { BookOpinions } from '@/components/book/BookOpinions/BookOpinions';
 import { BookDetails } from '@/components/book/BookDetails/BookDetails';
 import styles from './styles.module.css'
 import { urls } from '@/utils/urls';
+import { BookPageContent } from '@/components/book/BookPageContent/BookPageContent';
 
 const {rootPath} = urls();
 interface BookProps{
@@ -44,18 +45,19 @@ const getBookDB = async (bookId: string) => {
     <div className={styles.details_page}>
         <Loader isLoading={false}>
           <h2 className={styles.details_header}>{book?.volumeInfo?.title}</h2>
-          <section className={styles.details_info}>
-            {book &&
-              <BookDetails 
-                  currentBook={book}
-              />}
-          </section>
-
-          <section className={styles.details_opinions}>
-            <BookOpinions 
-              bookId={book?.id}
-            />
-          </section>
+          <BookPageContent>
+            <section className={styles.details_info}>
+              {book &&
+                <BookDetails 
+                    currentBook={book}
+                />}
+            </section>
+            <section className={styles.details_opinions}>
+              <BookOpinions 
+                bookId={book?.id}
+              />
+            </section>
+          </BookPageContent>
         </Loader>
       </div>
   )

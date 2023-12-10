@@ -75,7 +75,40 @@
  .info_section{
   margin-bottom: 30px;
  }
-
+ 
  .info_content{
   margin-top: 10px;
  }
+
+ @media screen and (max-width: 1590px) {
+    .wrapper{
+      gap: 50px;
+    }
+ }
+
+ @media screen and (max-width: 1200px) {
+  .wrapper{
+    flex-direction: column;
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper{
+    margin-top: 30px;
+    gap: 0;
+  }
+
+  .books {
+    border-top: 1px solid blue;
+    padding-top: 25px;
+  }
+
+  .info_bottom {
+    margin-bottom: 0;
+  }
+  
+  .info {
+    margin-bottom: 10px;
+  }
+}

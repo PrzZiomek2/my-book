@@ -19,3 +19,14 @@
   margin-top: 35px;
   grid-area: head;
 }
+
+@media screen and (max-width: 1200px) {
+  .details_page{
+    grid-template-columns: 1fr;
+  }
+
+  .details_info{
+    margin-top: 30px;
+    margin-right: 0;
+  }
+}

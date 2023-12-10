@@ -73,3 +73,38 @@
   display: flex;
   flex-direction: column;
 }
+
+@media screen and (max-width: 1590px) {
+  .details_info_stats{
+    flex-direction: column;
+    margin-left: 40px;
+    gap: 20px;
+    align-items: flex-end;
+   }
+}
+
+@media screen and (max-width: 1200px) {
+  .details_info_stats{
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .details_info_left{
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .details_image{
+    margin: auto;
+  }
+
+  .details_info_stats{
+    margin: 0;
+    align-items: center;
+  }
+
+  .details_info_stats_action button{
+    width: 290px;
+  }
+}
