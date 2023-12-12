@@ -48,7 +48,10 @@ export const  InputTags: FC<InputTagsProps> = ({tags, setTags, id, label}) =>{
           variant="standard" 
           className="profile_form__input" 
           placeholder="Wpisz tutaj"
-          InputProps={{ id }}
+          InputProps={{ 
+            id,
+            name: id
+          }}
         />
 
         <Button

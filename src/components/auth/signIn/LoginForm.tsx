@@ -17,7 +17,7 @@ type FormValues = {
   password: string;
 }
 interface LoginFormProps {
-  onSubmit: (data: FormValues) => Promise<void>;
+  onSubmit: (data: FormValues) => Promise<void | FormValues>;
 }
 
 export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
@@ -25,11 +25,11 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email('Invalid email')
-      .required('pole email nie może być puste'),
+      .email('Email nieprawidłowy')
+      .required('Pole email nie może być puste'),
     password: yup
       .string()
-      .required('Polr hasło nie może byc puste'),
+      .required('Pole hasło nie może byc puste'),
   });
 
   const { control, handleSubmit, formState, setError } = useForm({

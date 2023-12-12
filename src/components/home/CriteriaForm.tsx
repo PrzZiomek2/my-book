@@ -1,18 +1,17 @@
 "use client";
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import useSWR from 'swr';
+import { useSession } from 'next-auth/react';
 
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 
 import { InputTags } from '@/components/commons/inputTags/InputTags';
 import { urls } from '@/utils/urls';
-import { useSession } from 'next-auth/react';
 import { CriteriaFormData } from '@/types/interfaces';
-import ButtonLink from '../ui/ButtonLink';
 import Tooltip from '@mui/material/Tooltip';
-import useSWR from 'swr';
 import { Button } from '@mui/material';
-import { useRouter } from 'next/navigation';
 
 const {rootPath} = urls();
 
@@ -28,12 +27,12 @@ const CriteriaForm = () => {
     isCreative: false,
     tags: []   
  }); 
- 
+
   useEffect(() =>{ 
       if(!data?.data) return;
       setFormData(data?.data)
   }, [data?.data]); 
-  
+
  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -97,6 +96,7 @@ const CriteriaForm = () => {
             <label htmlFor="isCreative">Kreatywnie</label>
             <Checkbox
               id='isCreative'
+              name='isCreative'
               color="primary"
               value={formData.isCreative}
               onChange={(e) =>  handleInputChange("isCreative", e.currentTarget.checked)}
