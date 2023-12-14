@@ -1,11 +1,12 @@
 const nextJest = require('next/jest.js');
  
 const createJestConfig = nextJest({
-  dir: './',
+  dir: './', 
 })
  
 /** @type {import('jest').Config} */
 const config = {
+  setupFiles: ["<rootDir>/setEnvVars.js"],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   preset: "ts-jest",
@@ -14,8 +15,3 @@ const config = {
 module.exports = createJestConfig(config)
 
 
-/*
- moduleNameMapper: {
-    'compactDecrypt': require.resolve('./jwe/compact/decrypt.js'),
-  },
-*/
