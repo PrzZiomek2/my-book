@@ -19,10 +19,16 @@ export async function POST(req: Request, {params}:{params: {id: string}}) {
    const db = client.db("library"); 
    let bookUpdated = null;
    const bookId = params.id; 
+
+   if(!book){
+      throw new Error("Book data is corrupted");
+   };
+
    const existingBook = await db.collection<CustomBook>("books").findOne({id: bookId});
 
    if(existingBook){ 
-     bookUpdated = await db.collection<UserBooks>("books").findOneAndUpdate({ id: bookId }, {$set: book});
+     const {_id , ...updateBook} = book;
+     bookUpdated = await db.collection<UserBooks>("books").findOneAndUpdate({ id: bookId }, {$set: updateBook});
      return NextResponse.json({ message: "dane zaktualizowano", success: bookUpdated.ok });
    };  
    
