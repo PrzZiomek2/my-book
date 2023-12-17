@@ -29,20 +29,6 @@ export const AccountData = () => {
    
    const handleAddUserSubmit = async () => {   
 
-      const res = await fetch(`${rootPath}/api/profile`, {
-        method: "POST",
-        body: JSON.stringify({
-          name: formData.name, 
-          description: formData.description, 
-          image: uploadedImages,
-          tags: []   
-        }),
-      }).catch(err => console.log("err when posting room", err));
-  
-      const resJson = await res?.json(); 
-      if(resJson?.insertedId){
-       //  router.push("/rooms");
-      }
     };
 
    return (

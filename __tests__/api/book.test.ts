@@ -110,7 +110,8 @@ describe("test /api/book/[id] route", () => {
       expect(async () => {
          await POST(postReq, {params});
       })
-      .rejects.toThrow(errorMessage);
+      .rejects
+      .toThrow(errorMessage);
    });
 
 })
