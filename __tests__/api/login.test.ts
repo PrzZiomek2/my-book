@@ -11,11 +11,6 @@ const testUser = {
    password: "test123"
 }
 
-interface RequestBody {
-   username: string;
-   password: string;
-};
-
 describe("test /api/login route", () => {
 
    afterAll(async () => {

@@ -9,9 +9,14 @@ interface RequestBody {
 
 export async function POST(req: Request) {
    const body: RequestBody = await req.json(); 
+   const {description} = body;
+
+   if(!description){
+      throw new Error("no description data was provied");
+   };;
 
    const completion = await getOpenaiCompletion({
-      content: giveKeywordsFromProfileDescription(body.description.substring(0, 600))
+      content: giveKeywordsFromProfileDescription(description.substring(0, 600))
    })
    .catch(err => console.log(err)); 
    
