@@ -9,7 +9,7 @@
     "lint": "next lint",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "analyze": "cross-env ANALYZE=true next build",
-    "test": "jest --verbose",
+    "test": "jest --verbose --silent",
     "test:watch": "jest --watchAll"
   },
   "dependencies": {

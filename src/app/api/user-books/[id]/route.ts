@@ -7,30 +7,40 @@ interface RequestBody {
    book: CustomBook;
 }
 
-// TO DO: refactor method and routes structure
-
 export async function POST(req: Request, {params}:{params: {id: string}}) {
    const { book }: RequestBody = await req.json(); 
    const userId = params.id; 
    const client = await clientPromise;
    const db = client.db("library"); 
-   let bookUpdated = null;
+   const userExists = await db.collection<UserBooks>("user_books").findOne({userId});
    const bookList = await db.collection<UserBooks>("user_books").findOne({ userId });  
    const bookExists = bookList && bookList.books.find(({id}) => id === book.id); 
-   const bookNotModified = isEqual(book, bookExists);
 
-   if(!bookNotModified){
-     const userList = await db.collection<UserBooks>("user_books").findOne({userId});
-     if(userList){
-      bookUpdated = await db.collection<UserBooks>("user_books").findOneAndUpdate({ userId }, {$push: {books: book}});
+   if(!book){
+      throw new Error("Book not provided");
+   };
+
+   if(userExists && bookExists){
+      const {_id , ...updateBook} = book;
+      const bookUpdated = await db.collection<UserBooks>("user_books").findOneAndUpdate(
+         { userId }, 
+         { $set: { "books.$[elem]": updateBook } },
+         { arrayFilters: [{ "elem.id": updateBook.id }] },
+      ); console.log({bookUpdated});
+      
       return NextResponse.json({ message: "dane zaktualizowano", success: bookUpdated.ok });
-     };
+   };
 
-     const createdList = await db.collection<UserBooks>("user_books").insertOne({ userId, books: [book]});
-     return NextResponse.json({ message: "dane zaktualizowano", success: createdList.acknowledged });
-   }
+   if(userExists){
+      const bookUpdated = await db.collection<UserBooks>("user_books").findOneAndUpdate(
+         { userId }, 
+         {$push: {books: book}}
+      );
+      return NextResponse.json({ message: "dane zaktualizowano", success: bookUpdated.ok });
+   };
 
-   return NextResponse.json({ message: "pozycja już była zapisana" });
+   const createdList = await db.collection<UserBooks>("user_books").insertOne({ userId, books: [book]});
+   return NextResponse.json({ message: "dodano kolekcję", success: createdList.acknowledged });
 }
 
 
@@ -43,3 +53,4 @@ export async function GET(request: Request, {params}:{params: {id: string}}) {
 
    return NextResponse.json({ books: user?.books });
 }
+
