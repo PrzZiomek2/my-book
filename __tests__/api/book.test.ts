@@ -28,7 +28,7 @@ describe("test /api/book/[id] route", () => {
       await client.close();
    });
 
-   it("should return book by given id", async () => {
+   it("should return book with given id", async () => {
       const params = { id: bookId };
       const { req } = createMocks({
          method: 'GET',
@@ -55,7 +55,7 @@ describe("test /api/book/[id] route", () => {
       expect(book).toBeNull();
    });
 
-   it(`should return message '${updateSuccessMsg}' if book was successfully updated`, async () => {
+   it(`should return message '${updateSuccessMsg}' if book successfully updated`, async () => {
       const params = { id: bookId };
       const { req: getReq } = createMocks({
          method: 'GET',
@@ -76,7 +76,7 @@ describe("test /api/book/[id] route", () => {
       expect(resj.success).toBeTruthy();
    });
 
-   it(`should return message '${addedMessage}' if book was successfully added`, async () => {
+   it(`should return message '${addedMessage}' if book successfully added`, async () => {
       const id = generateRandomString();
       const params = { id };
       const newTestBook = {
@@ -97,7 +97,7 @@ describe("test /api/book/[id] route", () => {
       expect(resj.success).toBeTruthy();
    });
 
-   it(`should thrown an error if book could not be added`, async () => {
+   it(`should thrown an error if book can not be added`, async () => {
       const id = generateRandomString();
       const params = { id };
       const newTestBook = null;

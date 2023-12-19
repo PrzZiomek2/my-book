@@ -5,16 +5,15 @@ import Link from 'next/link';
 
 import truncate from 'lodash.truncate';
 
-import { RankingBook } from '@/types/interfaces';
-import { Card } from '@/components/ui/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { BookDefault } from '@/types/interfaces';
+
+import { RankingBook } from '@/types/interfaces';
+import { Card } from '@/components/ui/Card';
 import { BookActions } from '../commons/BookActions';
 import RatingStars from '../commons/RatingStarts';
-import { ExternalLink } from '../ui/ExternalLink/ExternalLink';
 import styles from './styles.module.css';
 import { Tag } from '@/components/ui/Tag';
 
@@ -23,7 +22,7 @@ interface RankingBookProps{
   id: string;
 }
 
-export const RankedBook: FC<RankingBookProps> = ({book, id}) => { console.log({n: Number(book.rate)});
+export const RankedBook: FC<RankingBookProps> = ({book, id}) => { 
   const {imageLink, title, authors, subtitle, rate, opinions, favourite, read, infoLink, categories} = book;
 
   const categoriesExtracted = categories.map(value => {
