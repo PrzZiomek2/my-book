@@ -1,0 +1,77 @@
+{
+   "book": {
+      "_id": {
+        "$oid": "6548d2ccc28f58c00bc82e63"
+      },
+      "id": "LvYd0AEACAAJ",
+      "volumeInfo": {
+        "title": "React w działaniu",
+        "subtitle": "tworzenie aplikacji internetowych",
+        "authors": [
+          "Stoân Stefanov"
+        ],
+        "publishedDate": "2017",
+        "imageLinks": {
+          "thumbnail": "http://books.google.com/books/content?id=YKCLEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "8328333015"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9788328333017"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": {
+          "$numberInt": "0"
+        },
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "language": "pl",
+        "previewLink": "http://books.google.pl/books?id=LvYd0AEACAAJ&dq=react&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.pl/books?id=LvYd0AEACAAJ&dq=react&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/React_w_dzia%C5%82aniu.html?hl=&id=LvYd0AEACAAJ"
+      },
+      "kind": "books#volume",
+      "etag": "8fZy+o0PUj0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/LvYd0AEACAAJ",
+      "saleInfo": {
+        "country": "PL",
+        "listPrice": {
+          "amount": 15
+        },
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "PL",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=LvYd0AEACAAJ&hl=&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "favourite": [
+        "65458c7daba25196d1557c13"
+      ]
+    }
+}

@@ -69,10 +69,10 @@ export const BookDetails: FC<BookDetailsProps> = ({currentBook}) => {
       </div>
       <div className={styles.details_info_bottom}>
       <div className={styles.details_sub_info}>
-         <h3>{volumeInfo?.subtitle}</h3>
+         <h3 data-cy="subtitle">{volumeInfo?.subtitle}</h3>
          <div className={styles.details_sub_metadane}>
             <h4>Autor / Autorzy</h4>
-            <span>{volumeInfo?.authors?.join(",")}</span>
+            <span data-cy="authors">{volumeInfo?.authors?.join(",")}</span>
          </div>
          <div className={styles.details_sub_metadane}>
             <h4>Opis</h4>
@@ -86,15 +86,15 @@ export const BookDetails: FC<BookDetailsProps> = ({currentBook}) => {
             <h4>Linki</h4>
             <div className={styles.details_sub_links}>
                <ExternalLink url={volumeInfo?.canonicalVolumeLink}>Google play</ExternalLink>
-               <ExternalLink url={volumeInfo?.infoLink}>Informacje</ExternalLink>
-               <ExternalLink url={volumeInfo?.previewLink}>Podgląd</ExternalLink>
+               <ExternalLink data-cy="info_link" url={volumeInfo?.infoLink}>Informacje</ExternalLink>
+               <ExternalLink data-cy="preview_link" url={volumeInfo?.previewLink}>Podgląd</ExternalLink>
             </div>
          </div>
       </div>
 
       <div className={styles.details_sub_price}>
          <h4>Cena</h4>
-         <span>{priceRange}</span>
+         <span data-cy="price_range">{priceRange}</span>
       </div>
 
       <div className={styles.details_sub_similar}>

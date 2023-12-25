@@ -90,10 +90,11 @@ export const BookActions: React.FC<BookActionsProps> = ({className, book}) => {
                onClick={() => handleAddBook(BookType.READ)} 
                size="medium"
                variant="outlined"
-                color="secondary"
+               color="secondary"
+               data-cy="add_to_read"
             >
                <Loader isLoading={isLoading.read!}> 
-                  <span>Przeczytane</span>
+                  <span data-cy="add_to_read-content">Przeczytane</span>
                </Loader>
             </Button>
             <IconButton 
