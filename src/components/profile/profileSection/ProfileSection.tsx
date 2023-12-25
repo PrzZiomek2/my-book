@@ -21,6 +21,7 @@ const {rootPath} = urls();
 
 export const ProfileSection: React.FC = () => {
    const {data: session} = useSession();
+   
    const [edit, setEdit] = useState(false);
    const [selectedImg, setSelectedImg] = useState("");
    const [info, setInfo] = useState("");
@@ -71,7 +72,6 @@ export const ProfileSection: React.FC = () => {
       <div className={styles.wrapper}>
         <section className={styles.info}>
          <AlertInfo expand={!!info} type='success' content={info} />
-            <Suspense fallback={<CircularProgress />}>
                <>
                <div className={styles.info_top}>
                {!edit ?
@@ -181,7 +181,6 @@ export const ProfileSection: React.FC = () => {
                      Zapisz
                   </Button>}
                </>
-            </Suspense>
         </section> 
         
         <section className={styles.books}>

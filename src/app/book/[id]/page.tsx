@@ -12,7 +12,6 @@ import { BookPageContent } from '@/components/book/BookPageContent/BookPageConte
 const {rootPath} = urls();
 interface BookProps{
   params: { id: string };
-  book: {};
 };
 
 const getBookAPI = async (bookId: string) => {
@@ -32,7 +31,7 @@ const getBookDB = async (bookId: string) => {
 }
 
 
- const Book: NextPage<BookProps> = async ({params}) => {
+ const Book = async ({params}: BookProps) => {
   const bookId = params.id
   
   let {book} = await getBookDB(bookId);
@@ -44,20 +43,20 @@ const getBookDB = async (bookId: string) => {
   return (
     <div className={styles.details_page}>
         <Loader isLoading={false}>
-          <h2 className={styles.details_header}>{book?.volumeInfo?.title}</h2>
+          <h2 className={styles.details_header} data-cy="title">{book?.volumeInfo?.title}</h2>
           <BookPageContent>
             <section className={styles.details_info}>
-              {book &&
+              {book && 
                 <BookDetails 
                     currentBook={book}
                 />}
             </section>
             <section className={styles.details_opinions}>
-              <BookOpinions 
-                bookId={book?.id}
-              />
+            <BookOpinions 
+              bookId={book?.id}
+            />
             </section>
-          </BookPageContent>
+          </BookPageContent>     
         </Loader>
       </div>
   )

@@ -21,6 +21,7 @@ export interface BookDefault {
          large: string;
       };
       previewLink: string;
+      canonicalVolumeLink: string;
    }
 }
 
