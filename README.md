@@ -3,4 +3,5 @@ A web application for book lovers. The app uses an OpenAI model to provide readi
 Project in progresss.
 
 Project technology stack: TypeScript, Next.js, React.js, Material UI, MongoDB, React Hook Form, OpenAI API, Google Books API
+
 Testing: JEST, RTL, Cypress
