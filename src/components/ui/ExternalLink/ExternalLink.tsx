@@ -8,11 +8,12 @@ interface ExternalLinkProps{
    children: ReactNode;
 };
 
-export const ExternalLink = ({url, children}: ExternalLinkProps) => {
+export const ExternalLink = ({url, children, ...props}: ExternalLinkProps) => {
    if(!url) return null;
 
   return (
    <Link 
+      {...props}
       href={url} 
       target='_blank'
       className={styles.link}
