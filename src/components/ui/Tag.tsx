@@ -12,15 +12,16 @@ interface TagProps{
  export const Tag = ({ data, handleDelete, small }: TagProps ) => (
    <Box 
       sx={{
-      background: "#205eb4",
-      display: "flex",
-      padding: "0.4rem",
-      margin: "10px 8px",
-      justifyContent: "center",
-      alignContent: "center",
-      color: "#ffffff",
-      borderRadius: "5px"
+         background: "#205eb4",
+         display: "flex",
+         padding: "0.4rem",
+         margin: "10px 8px",
+         justifyContent: "center",
+         alignContent: "center",
+         color: "#ffffff",
+         borderRadius: "5px"
       }}
+      data-cy="tag"
    >
       <Stack 
          direction='row' 

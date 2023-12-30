@@ -1,10 +1,10 @@
-import { generateRandomString } from "../../src/utils/handlers";
+  import { generateRandomString } from "../../src/utils/handlers";
 
 describe('sign in page', () => {
-   
+
    beforeEach(() => {
       cy.visit('/');
-      cy.wait(4000);
+      cy.wait(2000);
 
       cy.get('[aria-label="Ustawienia użytkownika"]').click();
       cy.get('[role="menu"]')
@@ -12,7 +12,7 @@ describe('sign in page', () => {
          .contains('Zaloguj się')
          .click();
 
-      cy.wait(3000);
+      cy.wait(2000);
    })
   
    it('should fill the login form and sign in the user', () => {      
@@ -26,7 +26,7 @@ describe('sign in page', () => {
          .contains('Zaloguj się')
          .click();
       
-      cy.wait(3000);
+      cy.wait(2000);
 
       cy.get('[aria-label="Ustawienia użytkownika"]').click();
       cy.get('[role="menu"]')
@@ -53,7 +53,7 @@ describe('sign in page', () => {
          .contains('Zapisz')
          .click();
 
-      cy.wait(2000);
+      cy.wait(1000);
 
       cy.get('[type="submit"]')
          .contains('Zaloguj się');

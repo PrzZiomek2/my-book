@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import { ImageUpload } from '../../ui/ImageUpload';
 import Image from 'next/image';
 import defaultImg from '../../../../public/profile.jpg';
-import CircularProgress from '@mui/material/CircularProgress';
 import { MyBooks } from '@/components/profile/myBooks/MyBooks';
 import { AlertInfo } from '@/components/ui/AlertInfo';
 import styles from './styles.module.css';
@@ -21,7 +20,6 @@ const {rootPath} = urls();
 
 export const ProfileSection: React.FC = () => {
    const {data: session} = useSession();
-   
    const [edit, setEdit] = useState(false);
    const [selectedImg, setSelectedImg] = useState("");
    const [info, setInfo] = useState("");
@@ -71,7 +69,11 @@ export const ProfileSection: React.FC = () => {
    return (
       <div className={styles.wrapper}>
         <section className={styles.info}>
-         <AlertInfo expand={!!info} type='success' content={info} />
+         <AlertInfo 
+            expand={!!info} 
+            type='success' 
+            content={info} 
+         />
                <>
                <div className={styles.info_top}>
                {!edit ?
@@ -105,7 +107,9 @@ export const ProfileSection: React.FC = () => {
                   }
                   <Button 
                      className={styles.edit_button}
-                     onClick={() => setEdit(!edit)} variant="contained"
+                     onClick={() => setEdit(!edit)} 
+                     variant="contained"
+                     data-cy="edit-profile"
                   >
                      {edit ? "Powrót" : "Edytuj dane" }
                   </Button>
@@ -125,7 +129,7 @@ export const ProfileSection: React.FC = () => {
                         /> : 
                         <>
                            <span className={styles.info_section__label}>Imię</span>
-                           <div className={styles.info_content}>{formData.name}</div>
+                           <div className={styles.info_content} data-cy="info-name">{formData.name}</div>
                         </>
                      }
                   </div>
@@ -144,7 +148,7 @@ export const ProfileSection: React.FC = () => {
                         /> : 
                         <>
                            <span className={styles.info_section__label}>Opis</span>
-                           <div className={styles.info_content}>{formData.description}</div>
+                           <div className={styles.info_content} data-cy="info-description">{formData.description}</div>
                         </>
                      }
                   </div>
@@ -177,6 +181,7 @@ export const ProfileSection: React.FC = () => {
                      onClick={handleAddUserSubmit} 
                      variant='contained'
                      className={styles.save_button}
+                     data-cy="save-profile"
                   >
                      Zapisz
                   </Button>}

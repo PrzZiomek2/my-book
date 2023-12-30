@@ -73,7 +73,7 @@ describe('Test book pagew component', () => {
       cy.get('[data-cy="add_to_read"]').should('not.exist');
   })
 
-  it('should throw error', async () => {
+  it('should throw an error if book id is incorrect', async () => {
     cy.stub(window, "fetch").resolves({
       json: cy.stub().resolves(bookExample)
     });

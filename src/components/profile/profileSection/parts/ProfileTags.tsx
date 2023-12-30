@@ -76,6 +76,7 @@ export const ProfileTags: FC<ProfileTagsProps> = ({setFormData, tags, descriptio
                padding: "5px 20px" 
             }}
             onClick={handleGenerateTags}
+            data-cy="generate-tags"
         >
           START
         </Button>
