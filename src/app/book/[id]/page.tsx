@@ -1,6 +1,4 @@
 import React from 'react';
- 
-import { NextPage } from 'next';
 
 import { Loader } from '@/utils/loader';
 import { BookOpinions } from '@/components/book/BookOpinions/BookOpinions';
