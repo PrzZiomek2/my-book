@@ -101,7 +101,8 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
           sx={{ 
             mt: 2,
             padding: "10px",
-            borderWidth: "2px"
+            borderWidth: "2px",
+            color: "rgb(92 92 132)"
           }}
           disabled={formState.isSubmitting}
         >
@@ -115,7 +116,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
               underline="hover"
               sx={{
                 fontSize: "0.875rem",
-                color: "rgb(97, 97, 200)",
+                color: "rgb(92 92 132)",
                 display: "flex",
                 alignItems: "center",
                 mt: 2,
@@ -129,7 +130,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
               underline="hover"
               sx={{
                 fontSize: "0.875rem",
-                color: "rgb(97, 97, 200)",
+                color: "rgb(92 92 132)",
                 display: "flex",
                 alignItems: "center",
                 mt: 2,

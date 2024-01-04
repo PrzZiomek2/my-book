@@ -12,6 +12,7 @@ export default function Results() {
          justifyContent: "center"
       }}
    >
-      <SearchResults/></Box>
+      <SearchResults/>
+   </Box>
    )
 }

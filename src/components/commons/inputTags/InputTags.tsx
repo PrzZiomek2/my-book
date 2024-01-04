@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Tag } from "@/components/ui/Tag";
-
+import { WithLabel } from "@/components/ui/WithLabel";
 
 interface InputTagsProps{
   tags: string[];
@@ -41,31 +41,38 @@ export const  InputTags: FC<InputTagsProps> = ({tags, setTags, id, label}) =>{
               );
             })}
           </Box>
-        <TextField
-          inputRef={tagRef}
-          fullWidth
-          {...(label ? {label} : {})}
-          variant="standard" 
-          className="profile_form__input" 
-          placeholder="Wpisz tutaj"
-          InputProps={{ 
-            id,
-            name: id
-          }}
-        />
-
-        <Button
-          className='profile_tags-add' 
-          sx={{marginTop: "12px"}}
-          onClick={() => {
-            if(!tagRef.current) return;
-            setTags([...tags, tagRef.current!.value])
-            tagRef.current.value = "";
-          }} 
-          variant="outlined"
-        >
-          Dodaj 
-        </Button>
+          <WithLabel
+            id={id}
+            text='dodawaniew tagów'
+          >
+            <TextField
+              inputRef={tagRef}
+              fullWidth
+              {...(label ? {label} : {})}
+              variant="standard" 
+              className="profile_form__input" 
+              placeholder="Wpisz tutaj"
+              InputProps={{ 
+                id,
+                name: id
+              }}
+            />
+          </WithLabel>
+          <Button
+            className='profile_tags-add' 
+            sx={{
+              marginTop: "12px",
+              color: '#125394'
+            }}
+            onClick={() => {
+              if(!tagRef.current) return;
+              setTags([...tags, tagRef.current!.value])
+              tagRef.current.value = "";
+            }} 
+            variant="outlined"
+          >
+            Dodaj 
+          </Button>
     </Box>
   );
 }
