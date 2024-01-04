@@ -16,6 +16,7 @@ import * as yup from 'yup';
 import { MediaViewportContext } from '@/context/MediaViewportProvider';
 import { setUrlParams } from '@/utils/handlers';
 import styles from './styles.module.css'
+import { WithLabel } from '@/components/ui/WithLabel';
 
 type FormValues = {
   searchValue: string;
@@ -49,6 +50,9 @@ export const SearchBook = () => {
     router.push(`/results?${urlWithParams}`);
   };
 
+  const selectId = 'searchSelect';
+  const inputId = 'searchInput';
+
   return (
     <form 
       className={styles.searchBookForm}
@@ -71,36 +75,51 @@ export const SearchBook = () => {
             control={control}
             defaultValue="title" 
             render={({ field }) => (
-              <Select
-                {...field}
-                sx={{ 
-                  width: isMobileMax ? "100%" : '120px',
-                  background: "aliceblue",
-                  height: "50px"
-                }}
+              <WithLabel
+                id={selectId}
+                text='opcje szukania'
               >
-                <MenuItem value="title">Tytuł</MenuItem>
-                <MenuItem value="author">Autor</MenuItem>
-              </Select>
+                <Select
+                  {...field}
+                  sx={{ 
+                    width: isMobileMax ? "100%" : '120px',
+                    background: "aliceblue",
+                    height: "50px"
+                  }}
+                  inputProps={{
+                    id: selectId
+                  }}
+                >
+                  <MenuItem value="title">Tytuł</MenuItem>
+                  <MenuItem value="author">Autor</MenuItem>
+                </Select>
+              </WithLabel>
             )}
           />
           <Controller
             name="searchValue"
             control={control}
             render={({ field }) => (
-              <TextField 
-                sx={{ 
-                  flexGrow: 1, 
-                  background: "aliceblue",
-                  maxWidth: isMobileMax ? "600px" : "700px"
-                }} 
-                InputProps={{ 
-                  sx: {
-                    height: "50px"
-                } }}
-                placeholder="Wyszukaj dowolną pozycję" 
-                {...field} 
-              />
+              <WithLabel
+                id={inputId}
+                text='pole wyszukiwarki'
+              >
+                <TextField 
+                  sx={{ 
+                    flexGrow: 1, 
+                    background: "aliceblue",
+                    maxWidth: isMobileMax ? "600px" : "700px"
+                  }} 
+                  InputProps={{ 
+                    sx: {
+                      height: "50px",
+                    },
+                    id: inputId 
+                  }}
+                  placeholder="Wyszukaj dowolną pozycję" 
+                  {...field} 
+                />
+              </WithLabel>
             )}
           />
           <Button

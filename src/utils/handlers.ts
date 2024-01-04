@@ -13,7 +13,7 @@ export const setUrlParams = (
   return currentParams.toString();
 };
 
-export const getBooksInfo = (book: CustomBook[], key: keyof CustomBook): string => book 
+export const getBooksInfo = (book: CustomBook[], key: keyof CustomBook): string => book && book 
   .filter(book => book[key])
   .map(book => `${book.volumeInfo.authors[0]}:${book.volumeInfo.title}`)
   .slice(0, 15)

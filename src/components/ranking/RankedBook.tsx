@@ -23,13 +23,13 @@ interface RankingBookProps{
 }
 
 export const RankedBook: FC<RankingBookProps> = ({book, id}) => { 
-  const {imageLink, title, authors, subtitle, rate, opinions, favourite, read, infoLink, categories} = book;
+  const {imageLink, title, authors, subtitle, rate, opinions, favourite, read, categories} = book;
 
-  const categoriesExtracted = categories.map(value => {
+  const categoriesExtracted = categories ? categories.map(value => {
     const subCats = value.split("/");
     const lastSubCatValues = subCats[subCats.length - 1].split(" ");
     return lastSubCatValues[lastSubCatValues.length - 1];
-  });
+  }) : [];
   
   const titleFragment = truncate(title, { 
     length: 80,
