@@ -8,6 +8,10 @@ A web application for book lovers. The app uses an OpenAI model to provide readi
 - OpenAI API, Google Books API
 - Cypress, JEST, RTL
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
 ## Requirements
 
 Install [npm and node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your local machine.
@@ -23,7 +27,9 @@ npm install
 
 It installs all packages listed in `package.json` file. If installation was successfull you are going to see `node_modules` folder created in `my-books` directory.
 
-3. Create `.env` file and setup there environmental variables:
+## Configuration
+
+Create `.env` file and setup there environmental variables:
 
 ```bash
 NEXTAUTH_SECRET=your-secret-key
@@ -47,7 +53,3 @@ Run npm script in your terminal
 ```bash
 npm run test
 ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
