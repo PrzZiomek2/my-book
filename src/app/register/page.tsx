@@ -1,66 +1,70 @@
 "use client";
-import React from 'react'
-import { useRouter } from 'next/navigation';
-import { SubmitHandler } from "react-hook-form"
+import React from "react";
+import { useRouter } from "next/navigation";
+import { SubmitHandler } from "react-hook-form";
 
-import {RegisterForm} from '@/components/register/RegisterForm';
-import { ActionType, useFetchReducer } from '@/utils/customHooks/useFetchReducer';
-import Container from '@mui/material/Container';
-import { AlertInfo } from '@/components/ui/AlertInfo';
-import { urls } from '@/utils/urls';
+import { RegisterForm } from "@/components/register/RegisterForm";
+import {
+  ActionType,
+  useFetchReducer,
+} from "@/utils/customHooks/useFetchReducer";
+import Container from "@mui/material/Container";
+import { AlertInfo } from "@/components/ui/AlertInfo";
+import { urls } from "@/utils/urls";
 
-const {rootPath} = urls();
+import styles from "./styles.module.css";
+
+const { rootPath } = urls();
 
 type FormValues = {
-   name: string;
-   email: string;
-   password: string;
- }
+  name: string;
+  email: string;
+  password: string;
+};
 
 export default function Register() {
+  const router = useRouter();
+  const [state, dispatch] = useFetchReducer();
 
-   const router = useRouter();
-   const [state, dispatch] = useFetchReducer();
+  const createAccount = async (data: FormValues) => {
+    dispatch({ type: ActionType.FETCH_INIT });
 
-   const createAccount = async (data: FormValues) => { 
-      dispatch({type: ActionType.FETCH_INIT});
-
-      const res = await fetch(`${rootPath}/api/user`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name, 
-          email: data.email,
-          password: data.password
-        }),
-      })
-      .catch(err => {
-         dispatch({
-            type: ActionType.FETCH_ERROR,
-            error: `Rejestracja nieudana, sprawdź podawane dane.`
-          });
+    const res = await fetch(`${rootPath}/api/user`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      }),
+    }).catch((err) => {
+      dispatch({
+        type: ActionType.FETCH_ERROR,
+        error: `Rejestracja nieudana, sprawdź podawane dane.`,
       });
+    });
 
-      if(!res) return; 
+    if (!res) return;
 
-      const resJson = await res.json(); 
+    const resJson = await res.json();
 
-      if(resJson?.error){
-         dispatch({
-            type: ActionType.FETCH_ERROR,
-            error: resJson?.error
-          });
-      }
-      
-      if(resJson?.insertedId){
-         router.push("/auth/signin");
-      }
-   }; 
+    if (resJson?.error) {
+      dispatch({
+        type: ActionType.FETCH_ERROR,
+        error: resJson?.error,
+      });
+    }
+
+    if (resJson?.insertedId) {
+      router.push("/auth/signin");
+    }
+  };
 
   return (
-   <Container>
-      <AlertInfo expand={!!state.error} content={state.error}/>
+    <Container>
+      <AlertInfo expand={!!state.error} content={state.error} />
+      <h2 className={styles.header}>Załóż konto</h2>
       <RegisterForm createAccount={createAccount} />
-   </Container>
-  )
+    </Container>
+  );
 }
