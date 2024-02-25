@@ -1,21 +1,22 @@
 /** @type {import('next').NextConfig} */
 
-const withBundleAnalyzer = require('@next/bundle-analyzer');
+const withBundleAnalyzer = require("@next/bundle-analyzer");
 
 const nextConfig = {
-   images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'res.cloudinary.com',
-        },
-        {
-          protocol: 'http',
-          hostname: 'books.google.com'
-        },
-      ],
-    },
-    typescript: {ignoreBuildErrors: true}
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "http",
+        hostname: "books.google.com",
+      },
+    ],
+  },
 };
 
-module.exports = withBundleAnalyzer({enabled: process.env.ANALYZE === "true"})(nextConfig);
+module.exports = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(nextConfig);

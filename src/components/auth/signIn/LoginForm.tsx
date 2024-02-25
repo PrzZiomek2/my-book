@@ -1,35 +1,32 @@
-import React, { BaseSyntheticEvent } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 type FormValues = {
   email: string;
   password: string;
-}
+};
 interface LoginFormProps {
   onSubmit: (data: FormValues) => Promise<void | FormValues>;
 }
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
-
+export const LoginForm = ({ onSubmit }: LoginFormProps) => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email('Email nieprawidłowy')
-      .required('Pole email nie może być puste'),
-    password: yup
-      .string()
-      .required('Pole hasło nie może byc puste'),
+      .email("Email nieprawidłowy")
+      .required("Pole email nie może być puste"),
+    password: yup.string().required("Pole hasło nie może byc puste"),
   });
 
   const { control, handleSubmit, formState, setError } = useForm({
@@ -41,17 +38,15 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
   };
 
   return (
-    <Box sx={{
-      maxWidth: "600px",
-      margin: "auto",
-      marginTop: "50px"
-      }}>
+    <Box
+      sx={{
+        maxWidth: "600px",
+        margin: "auto",
+        marginTop: "30px",
+      }}
+    >
       <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <FormControl 
-          fullWidth 
-          variant="outlined" 
-          margin="normal"
-        >
+        <FormControl fullWidth variant="outlined" margin="normal">
           <Controller
             name="email"
             control={control}
@@ -70,11 +65,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
             )}
           />
         </FormControl>
-        <FormControl 
-          fullWidth 
-          variant="outlined" 
-          margin="normal"
-        >
+        <FormControl fullWidth variant="outlined" margin="normal">
           <Controller
             name="password"
             control={control}
@@ -98,19 +89,17 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
           variant="outlined"
           color="secondary"
           fullWidth
-          sx={{ 
+          sx={{
             mt: 2,
             padding: "10px",
             borderWidth: "2px",
-            color: "rgb(92 92 132)"
+            color: "rgb(92 92 132)",
           }}
           disabled={formState.isSubmitting}
         >
           Zaloguj się
         </Button>
-        <Box 
-          mt={2} 
-        >
+        <Box mt={2}>
           <Typography>
             <Link
               underline="hover"
@@ -122,7 +111,8 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
                 mt: 2,
               }}
             >
-              <GoogleIcon sx={{ fontSize: "1.2rem", mr: 1 }} /> Zaloguj się przez Google
+              <GoogleIcon sx={{ fontSize: "1.2rem", mr: 1 }} /> Zaloguj się
+              przez Google
             </Link>
           </Typography>
           <Typography>
@@ -136,24 +126,26 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) =>{
                 mt: 2,
               }}
             >
-              <FacebookIcon sx={{ fontSize: "1.2rem", mr: 1 }} /> Zaloguj się przez Facebooka
+              <FacebookIcon sx={{ fontSize: "1.2rem", mr: 1 }} /> Zaloguj się
+              przez Facebooka
             </Link>
           </Typography>
         </Box>
-        <Typography 
-        variant="body2" 
-        sx={{ 
-          mt: 3, 
-          mb: 0, 
-          fontSize: "0.875rem", 
-          fontWeight: "bold" 
-        }}>
-          Nie masz jeszcze konta? <Link href="/register" className="link-danger">Zarejestruj się</Link>
+        <Typography
+          variant="body2"
+          sx={{
+            mt: 3,
+            mb: 0,
+            fontSize: "0.875rem",
+            fontWeight: "bold",
+          }}
+        >
+          Nie masz jeszcze konta?{" "}
+          <Link href="/register" className="link-danger">
+            Zarejestruj się
+          </Link>
         </Typography>
       </form>
     </Box>
- 
   );
-}
-
-
+};
